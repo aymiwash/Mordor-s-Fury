@@ -43,17 +43,18 @@ class Game {
         })
 
         this.ennemies.forEach((ennemy) => {
+            const randomSpeed = Math.random()
             if (this.player.top > ennemy.top) {
-                ennemy.directionY = 0.5
+                ennemy.directionY = randomSpeed
             }
             if (this.player.top < ennemy.top) {
-                ennemy.directionY = -0.5
+                ennemy.directionY = -randomSpeed
             }
             if (this.player.left > ennemy.left) {
-                ennemy.directionX = 0.5
+                ennemy.directionX = randomSpeed
             }
             if (this.player.left < ennemy.left) {
-                ennemy.directionX = -0.5
+                ennemy.directionX = -randomSpeed
             }
         })
 

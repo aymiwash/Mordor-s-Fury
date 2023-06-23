@@ -292,6 +292,7 @@ main {
 
 .ennemy{
     background-color: red;
+    border: solid black 1px;
 }
 
 
