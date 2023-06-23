@@ -1,0 +1,358 @@
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+    margin: 0;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+body {
+    background-color: rgb(204, 219, 192);
+    font-family: "Trebuchet MS", sans-serif;
+}
+
+header {
+    margin-top: 40px;
+    margin-bottom: 70px;
+
+}
+
+header h1 {
+    font-family: "Luminari", sans-serif;
+    text-align: center;
+    font-weight: bold;
+    font-size: 2.5rem;
+    letter-spacing: 3px;
+}
+
+main {
+    width: 100vw;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+/*GAMESCREEN CONTENT*/
+
+#game-screen {
+    background-color: black;
+    background-image: url("/images/grass_background.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: solid black 2px;
+    border-radius: 5px;
+    min-width: 450px;
+    height: 450px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-infos {
+    position: absolute;
+    color: black;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-shadow: white 0px 0px 15px;
+}
+
+#level {
+    top: 5px;
+    left: 5px;
+}
+
+#health {
+    top: 5px;
+    left: 70px;
+}
+
+#score {
+    right: 5px;
+    bottom: 5px;
+}
+
+#player {
+    position: absolute;
+    background-color: blue;
+}
+
+#player img {
+    width: 23px;
+    height: 30px;
+}
+
+
+/* START SCREEN */
+#start-screen {
+    background-color: rgba(0, 0, 0, 0.548);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#start-button {
+    display: block;
+    color: rgb(119, 42, 42);
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    width: 150px;
+    height: 60px;
+    background-color: rgb(242, 245, 239, 1);
+    border-radius: 5px;
+    border: solid 2px black;
+    padding-bottom: 5px;
+    padding-right: 5px;
+    box-shadow: inset -5px -5px grey;
+    font-family: "Trebuchet MS", sans-serif;
+
+}
+
+#start-button:focus {
+    background-color: rgb(179, 185, 174);
+    box-shadow: inset 5px 5px rgb(61, 61, 61);
+    padding: 5px 0 0 5px;
+}
+
+
+/* END GAME SCREEN */
+#end-screen {
+    background-color: rgba(0, 0, 0, 0.548);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    row-gap: 30px;
+    align-items: center;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: rgb(235, 222, 222);
+    display: none
+}
+
+#restart-button {
+    display: block;
+    color: rgb(119, 42, 42);
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-top: 100px;
+    width: 150px;
+    height: 60px;
+    background-color: rgb(242, 245, 239, 1);
+    border-radius: 5px;
+    border: solid 2px black;
+    padding-bottom: 5px;
+    padding-right: 5px;
+    box-shadow: inset -5px -5px grey;
+    font-family: "Trebuchet MS", sans-serif;
+
+}
+
+#restart-button:focus {
+    background-color: rgb(179, 185, 174);
+    box-shadow: inset 5px 5px rgb(61, 61, 61);
+    padding: 5px 0 0 5px;
+}
+
+
+/*PROJECTILE*/
+.projectile{
+    background-color: red;
+}
+
+
+/*ASIDES*/
+
+.instructions {
+    width: 200px;
+}
+
+.instructions p {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.keys {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.three-arrows {
+    display: flex;
+}
+
+.key {
+    background-color: rgba(255, 255, 255, 0.743);
+    border-radius: 5px;
+    border: solid 2px black;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 5px;
+    padding-right: 5px;
+    box-shadow: inset -5px -5px grey;
+}
+
+.key:hover {
+    background-color: rgba(185, 185, 185, 0.466);
+    box-shadow: inset 5px 5px rgb(61, 61, 61);
+    padding: 5px 0 0 5px;
+}
+
+.arrow {
+    width: 25px;
+    margin: 4px 2px;
+}
+
+.space {
+    width: 130px;
+    margin-top: 7px;
+}
+
+.rules {
+    width: 200px;
+    /* background-color: green; */
+}
+
+footer {
+    background-color: aqua;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+/* @media (max-width: 700px) {
+
+} */

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>MORDOR'S FURY</title>
+</head>
+
+<body>
+    <header>
+        <h1>MORDOR'S FURY</h1>
+    </header>
+    <main>
+
+
+        <aside class="instructions">
+            <p>How to play :</p>
+            <div class="keys">
+
+                <div class="key arrow up">↑</div>
+                <div class="three-arrows">
+                    <div class="key arrow left">←</div>
+                    <div class="key arrow down">↓</div>
+                    <div class="key arrow right">→</div>
+                </div>
+                <div class="key space">Space</div>
+            </div>
+        </aside>
+
+        <section id="game-screen">
+                <div id="level" class="game-infos">Lvl.0</div>
+                <div id="health" class="game-infos">health- - -</div>
+                <div id="score" class="game-infos">score</div>
+
+                <!-- player div -->
+                <div id="player"></div>
+
+                <!-- starting screen -->
+                <div id="start-screen" >
+                    <button type="button" id="start-button">START</button>
+                </div>
+
+                <!-- endgame screen -->
+                <div id="end-screen" >
+                    <p>Oh no ! You died !</p>
+                    <p class="score-screen"></p>
+                    <button type="button" id="restart-button">RESTART</button>
+                </div>
+
+
+        </section>
+
+        <aside class="rules">
+            <p>Move around the map and kill all the monsters.
+                Try to level up and get stronger !
+            </p>
+        </aside>
+    </main>
+
+
+    <footer>My social media, linked in, github and stuffs</footer>
+    <script src="./player.js"></script>
+    <script src="./game.js"></script>
+    <script src="./index.js"></script>
+</body>
+
+</html>
