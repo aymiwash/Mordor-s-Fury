@@ -2,14 +2,14 @@ class Projectile {
     constructor(playerTop, playerLeft) {
         this.player = player
         this.projectile = document.createElement("div")
-        this.projectileClass = this.projectile.classList.add('projectile')
-        this.projectilePotision = this.projectile.style.position = "absolute"
+        this.projectile.classList.add('projectile')
         this.top = playerTop
         this.left = playerLeft
         this.width = 10
         this.height = 3
         this.directionX = 0
         this.directionY = 0
+        this.projectile.style.position = "absolute"
 
     }
 
@@ -87,9 +87,14 @@ class Player {
     }
 
     shoot() {
-        const projectile = new Projectile(this.top, this.left)
+        //projectile spawn
+        const middleTop = this.top + this.height / 2
+        const middleLeft = this.left + this.width / 2
+        const projectile = new Projectile(middleTop, middleLeft)
         this.projectiles.push(projectile)
         projectile.projectileShot()
+
+        //direction and speed of projectile
         if(this.directionX === 0 && this.directionY === 0){
             projectile.directionX = 7
         }
@@ -104,7 +109,6 @@ class Player {
         if(this.directionY > 0){
             projectile.directionY = 7
         }
-
     }
 
     updatePosition() {

@@ -9,6 +9,7 @@ class Game {
         this.width = 450
         this.height = 450
         this.player = new Player(this.gameScreen)
+        this.ennemies = []
     }
 
     start() {
@@ -20,21 +21,53 @@ class Game {
         this.player.playerDiv.style.height = `${this.player.height}px`
         this.player.move()
 
+        
+
+        for(let i = 0; i < 5; i ++){
+            const ennemy = new Ennemy(this.height, this.width)
+            this.ennemies.push(ennemy)
+        }
+
+        this.ennemies.forEach((ennemy)=>{
+            ennemy.ennemyAppears()
+        })
+
         this.gameLoop()
 
     }
 
     gameLoop() {
         this.player.move()
-        
-        this.player.projectiles.forEach((projectile, index)=>{
-            projectile.projectileMovement()
-            if(projectile.top < 0 + projectile.height || projectile.top > 450 || projectile.left < 0 + projectile.width ||projectile.left > 450){
-                this.player.projectiles.splice(index,1)
+        this.ennemies.forEach((ennemy) => {
+            ennemy.ennemyMovement()
+        })
+
+        this.ennemies.forEach((ennemy) => {
+            if (this.player.top > ennemy.top) {
+                ennemy.directionY = 0.5
+            }
+            if (this.player.top < ennemy.top) {
+                ennemy.directionY = -0.5
+            }
+            if (this.player.left > ennemy.left) {
+                ennemy.directionX = 0.5
+            }
+            if (this.player.left < ennemy.left) {
+                ennemy.directionX = -0.5
             }
         })
 
-        requestAnimationFrame(()=>this.gameLoop())
+        this.player.projectiles.forEach((projectile, index) => {
+            projectile.projectileMovement()
+            if (projectile.top < 0 + projectile.height || projectile.top > 450 || projectile.left < 0 + projectile.width || projectile.left > 450) {
+                this.player.projectiles.splice(index, 1)
+            }
+        })
+
+
+
+
+        requestAnimationFrame(() => this.gameLoop())
     }
 
 

@@ -4,7 +4,7 @@ window.addEventListener('load', () => {
     const startButton = document.querySelector("#start-button")
     const player = document.querySelector("#player")
     let game
-
+    let shootOnce = false
 
 
     /*Starting game*/
@@ -30,8 +30,9 @@ window.addEventListener('load', () => {
                 break;
         }
 
-        if(event.code === "Space"){
+        if (event.code === "Space" && !shootOnce) {
             game.player.shoot()
+            shootOnce = true
         }
 
     }
@@ -48,6 +49,11 @@ window.addEventListener('load', () => {
                 game.player.directionX = 0
                 break;
         }
+
+        if(event.code === "Space"){
+            shootOnce = false
+        }
+
     })
 
 
