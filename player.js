@@ -90,22 +90,21 @@ class Player {
         const projectile = new Projectile(this.top, this.left)
         this.projectiles.push(projectile)
         projectile.projectileShot()
-        console.log(this.projectiles);
+        if(this.directionX === 0 && this.directionY === 0){
+            projectile.directionX = 7
+        }
+        if(this.directionX < 0){
+            projectile.directionX = -7
+        }if(this.directionX > 0){
+            projectile.directionX = 7
+        }
+        if(this.directionY < 0){
+            projectile.directionY = -7
+        }
+        if(this.directionY > 0){
+            projectile.directionY = 7
+        }
 
-        document.addEventListener('keydown',(event)=>{
-            if(event.key === "ArrowUp"){
-                projectile.directionY = -2
-            }
-            if(event.key === "ArrowDown"){
-                projectile.directionY = 2
-            }
-            if(event.key === "ArrowLeft"){
-                projectile.directionX = 2
-            }
-            if(event.key === "ArrowRight"){
-                projectile.directionX = 2
-            }
-        })
     }
 
     updatePosition() {

@@ -33,10 +33,6 @@ window.addEventListener('load', () => {
         if(event.code === "Space"){
             game.player.shoot()
         }
-        console.log(game.player.projectiles);
-
-
-
 
     }
     )

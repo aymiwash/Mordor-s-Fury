@@ -26,9 +26,12 @@ class Game {
 
     gameLoop() {
         this.player.move()
-
-        this.player.projectiles.forEach((projectile)=>{
+        
+        this.player.projectiles.forEach((projectile, index)=>{
             projectile.projectileMovement()
+            if(projectile.top < 0 + projectile.height || projectile.top > 450 || projectile.left < 0 + projectile.width ||projectile.left > 450){
+                this.player.projectiles.splice(index,1)
+            }
         })
 
         requestAnimationFrame(()=>this.gameLoop())
