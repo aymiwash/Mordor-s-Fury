@@ -1,53 +1,3 @@
-class Projectile {
-    constructor(playerTop, playerLeft) {
-        this.player = player
-        this.projectile = document.createElement("div")
-        this.projectile.classList.add('projectile')
-        this.top = playerTop
-        this.left = playerLeft
-        this.width = 10
-        this.height = 3
-        this.directionX = 0
-        this.directionY = 0
-        this.projectile.style.position = "absolute"
-
-    }
-
-    projectileShot() {
-        //Start position
-        this.projectile
-        this.projectileClass
-        document.querySelector("#game-screen").append(this.projectile)
-        this.projectile.style.width = `${this.width}px`
-        this.projectile.style.height = `${this.height}px`
-    }
-
-    projectileMovement() { //direction of shoot
-        this.top += this.directionY
-        this.left += this.directionX
-        if(this.top < 0 + this.height){
-            this.projectile.remove()
-        }
-        if(this.top > 450){
-            this.projectile.remove()
-        }
-        if(this.left < 0 + this.width){
-            this.projectile.remove()
-        }
-        if(this.left > 450){
-            this.projectile.remove()
-        }
-        
-
-        this.updateProjectilePosition()
-    }
-
-    updateProjectilePosition() {
-        this.projectile.style.top = `${this.top}px`
-        this.projectile.style.left = `${this.left}px`
-    }
-}
-
 class Player {
     constructor(gameScreen) {
         this.gameScreen = gameScreen
@@ -61,6 +11,7 @@ class Player {
         this.height = 30
         this.directionX = 0
         this.directionY = 0
+        this.currentDirection = ""
         this.score = 0
         this.projectiles = []
         this.projectile = new Projectile(this.top, this.left)
@@ -90,25 +41,55 @@ class Player {
         //projectile spawn
         const middleTop = this.top + this.height / 2
         const middleLeft = this.left + this.width / 2
-        const projectile = new Projectile(middleTop, middleLeft)
+        const projectile = new Projectile(middleTop, middleLeft, this.currentDirection, this.directionX, this.directionY)
         this.projectiles.push(projectile)
+        
+
         projectile.projectileShot()
 
+
+        //when player isnt moving
+        if (this.directionX === 0 && this.directionY === 0) {
+            if (this.currentDirection === "left") {
+                console.log("left");
+                projectile.directionX = -7
+                projectile.directionY = 0
+                console.log(projectile.directionX);
+            }
+            if (this.currentDirection === "right") {
+                projectile.directionX = 7
+                projectile.directionY = 0
+            }
+            if (this.currentDirection === "up") {
+                projectile.directionY = -7
+                projectile.directionX = 0
+            }
+            if (this.currentDirection === "down") {
+                projectile.directionY = -7
+                projectile.directionX = 0
+            } else {
+                projectile.directionX = 7
+            }
+
+        }
+
         //direction and speed of projectile
-        if(this.directionX === 0 && this.directionY === 0){
-            projectile.directionX = 7
-        }
-        if(this.directionX < 0){
+
+        if (this.directionX < 0) {
             projectile.directionX = -7
-        }if(this.directionX > 0){
+        }
+        if (this.directionX > 0) {
             projectile.directionX = 7
         }
-        if(this.directionY < 0){
+        if (this.directionY < 0) {
             projectile.directionY = -7
         }
-        if(this.directionY > 0){
+        if (this.directionY > 0) {
             projectile.directionY = 7
         }
+
+
+
     }
 
     updatePosition() {

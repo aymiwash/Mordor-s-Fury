@@ -41,12 +41,20 @@ window.addEventListener('load', () => {
     document.addEventListener("keyup", (event) => {
         switch (event.key) {
             case "ArrowUp":
+                game.player.directionY = 0
+                game.player.currentDirection = "up"
+                break;
             case "ArrowDown":
                 game.player.directionY = 0
+                game.player.currentDirection = "down"
                 break;
             case "ArrowLeft":
+                game.player.directionX = 0
+                game.player.currentDirection = "left"
+                break;
             case "ArrowRight":
                 game.player.directionX = 0
+                game.player.currentDirection = "right"
                 break;
         }
 
@@ -56,7 +64,4 @@ window.addEventListener('load', () => {
 
     })
 
-
-
 })
-
