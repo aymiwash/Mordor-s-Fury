@@ -12,6 +12,8 @@ class Player {
         this.directionX = 0
         this.directionY = 0
         this.currentDirection = ""
+        this.directionXOfProj = 7
+        this.directionYOfProj = 0
         this.score = 0
         this.projectiles = []
         this.projectile = new Projectile(this.top, this.left)
@@ -41,52 +43,53 @@ class Player {
         //projectile spawn
         const middleTop = this.top + this.height / 2
         const middleLeft = this.left + this.width / 2
-        const projectile = new Projectile(middleTop, middleLeft, this.currentDirection, this.directionX, this.directionY)
+
+        if (this.directionX === 0 && this.directionY === 0) {
+            if (this.currentDirection === "left") {
+                this.directionXOfProj = -7
+                this.directionYOfProj = 0
+            }
+            if (this.currentDirection === "right") {
+                this.directionXOfProj = 7
+                this.directionYOfProj = 0
+            }
+            if (this.currentDirection === "up") {
+                this.directionYOfProj = -7
+                this.directionXOfProj = 0
+            }
+            if (this.currentDirection === "down") {
+                this.directionYOfProj = 7
+                this.directionXOfProj = 0
+            }
+        }
+
+        if (this.directionX < 0) {
+            this.directionXOfProj = -7
+        }
+        if (this.directionX > 0) {
+            this.directionXOfProj = 7
+        }
+        if (this.directionY < 0) {
+            this.directionYOfProj = -7
+        }
+        if (this.directionY > 0) {
+            this.directionYOfProj = 7
+        }
+
+
+
+        const projectile = new Projectile(middleTop, middleLeft, this.directionXOfProj, this.directionYOfProj)
         this.projectiles.push(projectile)
-        
+
 
         projectile.projectileShot()
 
 
         //when player isnt moving
-        if (this.directionX === 0 && this.directionY === 0) {
-            if (this.currentDirection === "left") {
-                console.log("left");
-                projectile.directionX = -7
-                projectile.directionY = 0
-                console.log(projectile.directionX);
-            }
-            if (this.currentDirection === "right") {
-                projectile.directionX = 7
-                projectile.directionY = 0
-            }
-            if (this.currentDirection === "up") {
-                projectile.directionY = -7
-                projectile.directionX = 0
-            }
-            if (this.currentDirection === "down") {
-                projectile.directionY = -7
-                projectile.directionX = 0
-            } else {
-                projectile.directionX = 7
-            }
 
-        }
 
         //direction and speed of projectile
 
-        if (this.directionX < 0) {
-            projectile.directionX = -7
-        }
-        if (this.directionX > 0) {
-            projectile.directionX = 7
-        }
-        if (this.directionY < 0) {
-            projectile.directionY = -7
-        }
-        if (this.directionY > 0) {
-            projectile.directionY = 7
-        }
 
 
 

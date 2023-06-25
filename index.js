@@ -22,19 +22,23 @@ window.addEventListener('load', () => {
         switch (event.key) {
             case "ArrowUp":
                 upKeyPressed = true
-                game.player.directionY = -2;
+                game.player.directionY = -2
+                game.player.currentDirection = "up"
                 break;
             case "ArrowDown":
                 downKeyPressed = true
                 game.player.directionY = 2
+                game.player.currentDirection = "down"
                 break;
             case "ArrowLeft":
                 leftKeyPressed = true
                 game.player.directionX = -2
+                game.player.currentDirection = "left"
                 break;
             case "ArrowRight":
                 rightKeyPressed = true
                 game.player.directionX = 2
+                game.player.currentDirection = "right"
                 break;
         }
 
@@ -42,7 +46,7 @@ window.addEventListener('load', () => {
             game.player.shoot()
             shootOnce = true
         }
-
+        console.log(game.player.currentDirection);
     }
     )
 
@@ -54,7 +58,7 @@ window.addEventListener('load', () => {
             if(downKeyPressed){
                 game.player.directionY = 2
             }else{
-                game.player.currentDirection = "up"
+                
                 game.player.directionY = 0
             }
         }
@@ -63,7 +67,7 @@ window.addEventListener('load', () => {
             if(upKeyPressed){
                 game.player.directionY = -2
             }else{
-                game.player.currentDirection = "down"
+                
                 game.player.directionY = 0
             }
         }
@@ -73,7 +77,7 @@ window.addEventListener('load', () => {
                 game.player.directionX = 2
             }else{
                 game.player.directionX = 0
-                game.player.currentDirection = "left"
+                
             }
         }
         if(keyUp === "ArrowRight"){
@@ -82,13 +86,14 @@ window.addEventListener('load', () => {
                 game.player.directionX = -2
             }else{
                 game.player.directionX = 0
-                game.player.currentDirection = "right"
+                
             }
         }
 
         if(event.code === "Space"){
             shootOnce = false
         }
+
 
     })
 

@@ -1,5 +1,5 @@
 class Projectile {
-    constructor(playerTop, playerLeft) {
+    constructor(playerTop, playerLeft, directionX, directionY) {
         this.player = player
         this.projectile = document.createElement("div")
         this.projectile.classList.add('projectile')
@@ -7,8 +7,8 @@ class Projectile {
         this.left = playerLeft
         this.width = 10
         this.height = 3
-        this.directionX = 0
-        this.directionY = 0
+        this.directionX = directionX
+        this.directionY = directionY
         this.projectile.style.position = "absolute"
 
     }
@@ -22,7 +22,8 @@ class Projectile {
         this.projectile.style.height = `${this.height}px`
     }
 
-    projectileMovement() { //direction of shoot
+    projectileMovement() { 
+        //direction of shoot
         this.top += this.directionY
         this.left += this.directionX
 
