@@ -64,15 +64,27 @@ class Player {
         }
 
         if (this.directionX < 0) {
+            if(this.directionY === 0){
+                this.directionYOfProj = 0
+            }
             this.directionXOfProj = -7
         }
         if (this.directionX > 0) {
+            if(this.directionY === 0){
+                this.directionYOfProj = 0
+            }
             this.directionXOfProj = 7
         }
         if (this.directionY < 0) {
+            if(this.directionX === 0){
+                this.directionYOfProj = 0
+            }
             this.directionYOfProj = -7
         }
         if (this.directionY > 0) {
+            if(this.directionX === 0){
+                this.directionYOfProj = 0
+            }
             this.directionYOfProj = 7
         }
 

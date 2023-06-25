@@ -45,9 +45,7 @@ window.addEventListener('load', () => {
         if (event.code === "Space" && !shootOnce) {
             game.player.shoot()
             shootOnce = true
-        }
-        console.log(game.player.currentDirection);
-    }
+        }    }
     )
 
     //on keyUp, set the playerdirection 
