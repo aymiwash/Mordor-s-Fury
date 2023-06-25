@@ -13,11 +13,20 @@ class Game {
         this.ennemies = []
         this.intervalID = 0
         this.ennemiesWave = 0
+        this.introAudio = document.querySelector("#intro-audio")
+        this.fightAudio = new Audio("/sounds/fight-audio.mp3")
+        this.volume = 0.4
     }
+
+
 
     start() {
         //hiding startscreen
         this.startScreen.style.display = "none"
+        this.introAudio.pause()
+        this.fightAudio.play()
+        this.fightAudio.volume = this.volume
+
 
         // making player appear
         this.player.playerDiv.style.width = `${this.player.width}px`
@@ -115,6 +124,8 @@ class Game {
             this.endScreen.style.display = "flex"
             const endScore = document.querySelector(".score-screen")
             endScore.textContent = `Your score is ${this.score}`
+
+            this.fightAudio.pause()
             console.log("game over");
         }
 

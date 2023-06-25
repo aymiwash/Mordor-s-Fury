@@ -3,12 +3,15 @@ window.addEventListener('load', () => {
 
     const startButton = document.querySelector("#start-button")
     const restartButton = document.querySelector('#restart-button')
+    const introAudio = document.querySelector("#intro-audio")
     let game
     let shootOnce = false
     let leftKeyPressed = false
     let rightKeyPressed = false
     let upKeyPressed = false
     let downKeyPressed = false
+
+    introAudio.volume = 0.4
 
 
     /*Starting game*/
