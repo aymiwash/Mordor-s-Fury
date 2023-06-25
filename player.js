@@ -44,6 +44,7 @@ class Player {
         const middleTop = this.top + this.height / 2
         const middleLeft = this.left + this.width / 2
 
+        //direction of projectile when player doesnt move
         if (this.directionX === 0 && this.directionY === 0) {
             if (this.currentDirection === "left") {
                 this.directionXOfProj = -7
@@ -63,6 +64,7 @@ class Player {
             }
         }
 
+        //direction of projectile when player moves
         if (this.directionX < 0) {
             if(this.directionY === 0){
                 this.directionYOfProj = 0
@@ -88,23 +90,17 @@ class Player {
             this.directionYOfProj = 7
         }
 
-
-
+        //creation of projectile
         const projectile = new Projectile(middleTop, middleLeft, this.directionXOfProj, this.directionYOfProj)
         this.projectiles.push(projectile)
-
-
         projectile.projectileShot()
+    }
 
-
-        //when player isnt moving
-
-
-        //direction and speed of projectile
-
-
-
-
+    isPlayerAlive(){
+        if(this.health > 0){
+            return true
+        }
+        return false
     }
 
     updatePosition() {

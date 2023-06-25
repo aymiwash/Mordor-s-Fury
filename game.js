@@ -11,6 +11,8 @@ class Game {
         this.height = 450
         this.player = new Player(this.gameScreen)
         this.ennemies = []
+        this.intervalID = 0
+        this.ennemiesWave = 0
     }
 
     start() {
@@ -22,15 +24,16 @@ class Game {
         this.player.playerDiv.style.height = `${this.player.height}px`
         this.player.move()
 
+        this.intervalID = setInterval(() => {
+            for (let i = 0; i < 5 + this.ennemiesWave; i++) {
+                const ennemy = new Ennemy(this.height, this.width)
+                this.ennemies.push(ennemy)
+                ennemy.ennemyAppears()
+            }
 
+            this.ennemiesWave += 1
+        }, 4000)
 
-        for (let i = 0; i < 5; i++) {
-            const ennemy = new Ennemy(this.height, this.width)
-            this.ennemies.push(ennemy)
-        }
-        this.ennemies.forEach((ennemy) => {
-            ennemy.ennemyAppears()
-        })
         this.gameLoop()
     }
 
@@ -65,7 +68,9 @@ class Game {
     }
 
     gameLoop() {
+        //player movement
         this.player.move()
+        //ennemies movement
         this.ennemies.forEach((ennemy) => {
             ennemy.ennemyMovement()
         })
@@ -86,15 +91,32 @@ class Game {
             }
         })
 
+        //projectiles movement
         this.player.projectiles.forEach((projectile, index) => {
             projectile.projectileMovement()
             if (projectile.top < 0 + projectile.height || projectile.top > 450 || projectile.left < 0 + projectile.width || projectile.left > 450) {
                 this.player.projectiles.splice(index, 1)
             }
         })
+
+        //collisions
         this.didProjectileHitEnnemy()
         this.didEnnemyHitPlayer()
 
+        //player dies
+        if (this.player.health <= 0) {
+            clearInterval(this.intervalID)
+            this.player.playerDiv.remove()
+            delete this.player
+            this.ennemies.forEach((ennemy)=>{
+                ennemy.ennemy.remove()
+            })
+            delete this.ennemies
+            this.endScreen.style.display = "flex"
+            const endScore = document.querySelector(".score-screen")
+            endScore.textContent = `Your score is ${this.score}`
+            console.log("game over");
+        }
 
 
 

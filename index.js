@@ -2,7 +2,8 @@
 window.addEventListener('load', () => {
 
     const startButton = document.querySelector("#start-button")
-    const player = document.querySelector("#player")
+    const restartButton = document.querySelector('#restart-button')
+    const endScore = document.querySelector(".score-screen")
     let game
     let shootOnce = false
     let leftKeyPressed = false
@@ -87,12 +88,13 @@ window.addEventListener('load', () => {
                 
             }
         }
-
         if(event.code === "Space"){
             shootOnce = false
         }
-
-
+    })
+    
+    restartButton.addEventListener('click', ()=>{
+        location.reload()
     })
 
 })
