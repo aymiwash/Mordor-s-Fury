@@ -12,7 +12,7 @@ class Player {
         this.directionX = 0
         this.directionY = 0
         this.currentDirection = ""
-        this.directionXOfProj = 7
+        this.directionXOfProj = 0
         this.directionYOfProj = 0
         this.score = 0
         this.projectiles = []
@@ -62,6 +62,10 @@ class Player {
                 this.directionYOfProj = 7
                 this.directionXOfProj = 0
             }
+            else if(this.currentDirection === ""){
+                this.directionXOfProj = -7
+                this.directionYOfProj = 0
+            }
         }
 
         //direction of projectile when player moves
@@ -79,13 +83,13 @@ class Player {
         }
         if (this.directionY < 0) {
             if(this.directionX === 0){
-                this.directionYOfProj = 0
+                this.directionXOfProj = 0
             }
             this.directionYOfProj = -7
         }
         if (this.directionY > 0) {
             if(this.directionX === 0){
-                this.directionYOfProj = 0
+                this.directionXOfProj = 0
             }
             this.directionYOfProj = 7
         }
@@ -94,13 +98,6 @@ class Player {
         const projectile = new Projectile(middleTop, middleLeft, this.directionXOfProj, this.directionYOfProj)
         this.projectiles.push(projectile)
         projectile.projectileShot()
-    }
-
-    isPlayerAlive(){
-        if(this.health > 0){
-            return true
-        }
-        return false
     }
 
     updatePosition() {

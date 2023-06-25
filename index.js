@@ -3,7 +3,6 @@ window.addEventListener('load', () => {
 
     const startButton = document.querySelector("#start-button")
     const restartButton = document.querySelector('#restart-button')
-    const endScore = document.querySelector(".score-screen")
     let game
     let shootOnce = false
     let leftKeyPressed = false
