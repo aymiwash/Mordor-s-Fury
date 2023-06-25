@@ -5,6 +5,10 @@ window.addEventListener('load', () => {
     const player = document.querySelector("#player")
     let game
     let shootOnce = false
+    let leftKeyPressed = false
+    let rightKeyPressed = false
+    let upKeyPressed = false
+    let downKeyPressed = false
 
 
     /*Starting game*/
@@ -17,15 +21,19 @@ window.addEventListener('load', () => {
     document.addEventListener("keydown", (event) => {
         switch (event.key) {
             case "ArrowUp":
+                upKeyPressed = true
                 game.player.directionY = -2;
                 break;
             case "ArrowDown":
+                downKeyPressed = true
                 game.player.directionY = 2
                 break;
             case "ArrowLeft":
+                leftKeyPressed = true
                 game.player.directionX = -2
                 break;
             case "ArrowRight":
+                rightKeyPressed = true
                 game.player.directionX = 2
                 break;
         }
@@ -38,24 +46,44 @@ window.addEventListener('load', () => {
     }
     )
 
+    //on keyUp, set the playerdirection 
     document.addEventListener("keyup", (event) => {
-        switch (event.key) {
-            case "ArrowUp":
-                game.player.directionY = 0
+        const keyUp = event.key
+        if(keyUp === "ArrowUp"){
+            upKeyPressed = false
+            if(downKeyPressed){
+                game.player.directionY = 2
+            }else{
                 game.player.currentDirection = "up"
-                break;
-            case "ArrowDown":
                 game.player.directionY = 0
+            }
+        }
+        if(keyUp === "ArrowDown"){
+            downKeyPressed = false
+            if(upKeyPressed){
+                game.player.directionY = -2
+            }else{
                 game.player.currentDirection = "down"
-                break;
-            case "ArrowLeft":
+                game.player.directionY = 0
+            }
+        }
+        if(keyUp === "ArrowLeft"){
+            leftKeyPressed = false
+            if(rightKeyPressed){
+                game.player.directionX = 2
+            }else{
                 game.player.directionX = 0
                 game.player.currentDirection = "left"
-                break;
-            case "ArrowRight":
+            }
+        }
+        if(keyUp === "ArrowRight"){
+            rightKeyPressed = false
+            if(leftKeyPressed){
+                game.player.directionX = -2
+            }else{
                 game.player.directionX = 0
                 game.player.currentDirection = "right"
-                break;
+            }
         }
 
         if(event.code === "Space"){
