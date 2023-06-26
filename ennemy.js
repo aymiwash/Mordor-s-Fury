@@ -2,12 +2,15 @@ class Ennemy {
     constructor(maxTop, maxLeft) {
         this.ennemy = document.createElement("div")
         this.ennemyClass = this.ennemy.classList.add("ennemy")
+        this.ennemyImg = document.createElement('img')
+        this.ennemyImg.src = "./images/Zombie_Small.png"
+        this.ennemy.append(this.ennemyImg)
         this.maxTop = maxTop
         this.maxLeft = maxLeft
         this.top = 0
         this.left = 0
-        this.width = 23
-        this.height = 30
+        this.width = 34
+        this.height = 50
         this.directionX = 0
         this.directionY = 0
         this.health = 10

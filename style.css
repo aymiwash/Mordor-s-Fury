@@ -200,12 +200,90 @@ main {
 
 #player {
     position: absolute;
-    background-color: blue;
+    /*background-color: blue;*/
+    display: none;
+    overflow: hidden;
+}
+
+@keyframes character {
+    from{
+        transform : translate3d(-48px, -40px, 0)
+    }
+    to {
+        transform: translate3d(-54%, -40px, 0);
+    }
+}
+
+@keyframes moveCharacterRight {
+    from{
+        transform : translate3d(-48px, -180px, 0)
+    }
+    to {
+        transform: translate3d(-54%, -180px, 0);
+    }
+}
+
+@keyframes moveCharacterLeft {
+    from{
+        transform : translate3d(-48px, -180px, 0)
+    }
+    to {
+        transform: translate3d(-54%, -180px, 0);
+    }
 }
 
 #player img {
-    width: 23px;
-    height: 30px;
+
+    width:1100px;
+    left : 1000px;
+    animation : character 0.5s steps(4) infinite
+}
+
+/*PROJECTILE AND ENNEMY*/
+.projectile{
+    background-color: rgb(0, 0, 0);
+    top : -10px;
+    left : -10px;
+}
+
+.ennemy{
+    top : -10px;
+    left : -10px;
+    overflow: hidden;
+}
+.ennemy img{
+    width: 400px;
+    animation : moveEnnemyRight 0.5s steps(4) infinite
+}
+
+
+@keyframes moveEnnemyRight {
+    from{
+        transform : translate3d(-23px, -105px, 0)
+    }
+    to {
+        transform: translate3d(-85%, -105px, 0);
+    }
+}
+
+@keyframes moveEnnemyLeft {
+    from{
+        transform : translate3d(-23px, -110px, 0)
+    }
+    to {
+        transform: translate3d(-85%, -110px, 0);
+    }
+}
+
+.test{
+    
+    width: 34px;
+    height: 50px;
+    overflow: hidden;
+}
+.test img{
+    width: 400px;
+    animation : moveEnnemyRight 0.5s steps(4) infinite
 }
 
 
@@ -286,17 +364,6 @@ main {
 }
 
 
-/*PROJECTILE AND ENNEMY*/
-.projectile{
-    background-color: rgb(0, 0, 0);
-}
-
-.ennemy{
-    background-color: red;
-    top : -10px;
-    left : -10px;
-    border: solid black 1px;
-}
 
 
 /*ASIDES*/

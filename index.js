@@ -11,7 +11,7 @@ window.addEventListener('load', () => {
     let upKeyPressed = false
     let downKeyPressed = false
 
-    introAudio.volume = 0.4
+    //introAudio.volume = 0.4
 
 
     /*Starting game*/

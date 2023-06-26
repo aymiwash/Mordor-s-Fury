@@ -2,13 +2,16 @@ class Player {
     constructor(gameScreen) {
         this.gameScreen = gameScreen
         this.playerDiv = document.querySelector('#player')
+        this.playerImg = document.createElement('img')
+        this.playerImg.src = "./images/character.png"
+        this.playerDiv.append(this.playerImg)
         this.health = 100
         this.level = 0
         this.experience = 0
         this.top = 260
         this.left = 260
-        this.width = 23
-        this.height = 30
+        this.width = 40
+        this.height = 60
         this.directionX = 0
         this.directionY = 0
         this.currentDirection = ""
