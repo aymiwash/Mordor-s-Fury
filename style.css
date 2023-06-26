@@ -383,7 +383,6 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    position: relative;
 }
 
 .instructions .how-to-play {
@@ -391,29 +390,6 @@ main {
     text-align: center;
 }
 
-.key-instruction{
-    font-size: 1.5rem;
-    position: absolute;
-}
-
-.instruction-up{
-    left: 80px;
-    top: 20px
-}
-.instruction-down{
-
-}
-.instruction-left{
-    left : -10px
-    
-}
-.instruction-right{
-    left : 400px
-    
-}
-.instruction-space{
-    
-}
 
 .three-arrows {
     display: flex;
@@ -460,4 +436,14 @@ footer {
     position: absolute;
     bottom: 10px;
     right: 10px;
+}
+
+@media (max-width: 1280px) {
+    main {
+        flex-direction: column-reverse;
+        height: 80vh;
+        row-gap: 30px;
+    }
+
+
 }
