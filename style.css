@@ -151,6 +151,7 @@ header h1 {
 
 main {
     width: 100vw;
+    height: 70vh;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -165,8 +166,8 @@ main {
     background-size: cover;
     border: solid black 2px;
     border-radius: 5px;
-    min-width: 450px;
-    height: 450px;
+    min-width: 550px;
+    height: 550px;
     position: relative;
     display: flex;
     justify-content: center;
@@ -177,7 +178,7 @@ main {
 .game-infos {
     position: absolute;
     color: black;
-    font-size: 1.2rem;
+    font-size: 1.6rem;
     font-weight: bold;
     text-shadow: white 0px 0px 15px;
 }
@@ -189,7 +190,7 @@ main {
 
 #health {
     top: 5px;
-    left: 70px;
+    left: 120px;
 }
 
 #score {
@@ -221,24 +222,24 @@ main {
 #start-button {
     display: block;
     color: rgb(119, 42, 42);
-    font-size: 1.5rem;
+    font-size: 2.3rem;
     font-weight: bold;
     letter-spacing: 2px;
-    width: 150px;
-    height: 60px;
+    width: 250px;
+    height: 100px;
     background-color: rgb(242, 245, 239, 1);
-    border-radius: 5px;
+    border-radius: 10px;
     border: solid 2px black;
     padding-bottom: 5px;
     padding-right: 5px;
-    box-shadow: inset -5px -5px grey;
+    box-shadow: inset -10px -10px grey;
     font-family: "Trebuchet MS", sans-serif;
 
 }
 
 #start-button:focus {
     background-color: rgb(179, 185, 174);
-    box-shadow: inset 5px 5px rgb(61, 61, 61);
+    box-shadow: inset 10px 10px rgb(61, 61, 61);
     padding: 5px 0 0 5px;
 }
 
@@ -253,34 +254,34 @@ main {
     justify-content: center;
     row-gap: 30px;
     align-items: center;
-    font-size: 1.8rem;
+    font-size: 2.3rem;
     font-weight: bold;
-    color: rgb(235, 222, 222);
+    color: rgb(250, 250, 250);
     display: none
 }
 
 #restart-button {
     display: block;
     color: rgb(119, 42, 42);
-    font-size: 1.5rem;
+    font-size: 2.3rem;
     font-weight: bold;
     letter-spacing: 2px;
     margin-top: 100px;
-    width: 150px;
-    height: 60px;
+    width: 250px;
+    height: 100px;
     background-color: rgb(242, 245, 239, 1);
-    border-radius: 5px;
+    border-radius: 10px;
     border: solid 2px black;
     padding-bottom: 5px;
     padding-right: 5px;
-    box-shadow: inset -5px -5px grey;
+    box-shadow: inset -10px -10px grey;
     font-family: "Trebuchet MS", sans-serif;
 
 }
 
 #restart-button:focus {
     background-color: rgb(179, 185, 174);
-    box-shadow: inset 5px 5px rgb(61, 61, 61);
+    box-shadow: inset 10px 10px rgb(61, 61, 61);
     padding: 5px 0 0 5px;
 }
 
@@ -292,6 +293,8 @@ main {
 
 .ennemy{
     background-color: red;
+    top : -10px;
+    left : -10px;
     border: solid black 1px;
 }
 
@@ -299,7 +302,8 @@ main {
 /*ASIDES*/
 
 .instructions {
-    width: 200px;
+    font-size: 2rem;
+    width: 400px;
 }
 
 .instructions p {
@@ -320,36 +324,36 @@ main {
 
 .key {
     background-color: rgba(255, 255, 255, 0.743);
-    border-radius: 5px;
+    border-radius: 10px;
     border: solid 2px black;
-    height: 25px;
+    height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-bottom: 5px;
-    padding-right: 5px;
-    box-shadow: inset -5px -5px grey;
+    padding: 5px 20px 15px 10px;
+    box-shadow: inset -10px -10px grey;
 }
 
 .key:hover {
     background-color: rgba(185, 185, 185, 0.466);
-    box-shadow: inset 5px 5px rgb(61, 61, 61);
-    padding: 5px 0 0 5px;
+    box-shadow: inset 10px 10px rgb(61, 61, 61);
+    padding: 15px 10px 5px 20px;
 }
 
 .arrow {
-    width: 25px;
+    width: 40px;
     margin: 4px 2px;
 }
 
 .space {
-    width: 130px;
+    width: 230px;
     margin-top: 7px;
 }
 
 .rules {
-    width: 200px;
+    width: 400px;
     margin : 0 10px;
+    font-size: 2rem;
     /* background-color: green; */
 }
 

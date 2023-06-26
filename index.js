@@ -25,77 +25,79 @@ window.addEventListener('load', () => {
         switch (event.key) {
             case "ArrowUp":
                 upKeyPressed = true
-                game.player.directionY = -2
+                game.player.directionY = -1.8
                 game.player.currentDirection = "up"
                 break;
             case "ArrowDown":
                 downKeyPressed = true
-                game.player.directionY = 2
+                game.player.directionY = 1.8
                 game.player.currentDirection = "down"
                 break;
             case "ArrowLeft":
                 leftKeyPressed = true
-                game.player.directionX = -2
+                game.player.directionX = -1.8
                 game.player.currentDirection = "left"
                 break;
             case "ArrowRight":
                 rightKeyPressed = true
-                game.player.directionX = 2
+                game.player.directionX = 1.8
                 game.player.currentDirection = "right"
                 break;
         }
-
-        if (event.code === "Space" && !shootOnce) {
-            game.player.shoot()
-            shootOnce = true
-        }    }
+        if (game.player) {
+            if (event.code === "Space" && !shootOnce) {
+                game.player.shoot()
+                shootOnce = true
+            }
+        }
+    }
     )
 
     //on keyUp, set the playerdirection 
     document.addEventListener("keyup", (event) => {
         const keyUp = event.key
-        if(keyUp === "ArrowUp"){
+        if (keyUp === "ArrowUp") {
             upKeyPressed = false
-            if(downKeyPressed){
-                game.player.directionY = 2
-            }else{
-                
+            if (downKeyPressed) {
+                game.player.directionY = 1.8
+            } else {
+
                 game.player.directionY = 0
             }
         }
-        if(keyUp === "ArrowDown"){
+        if (keyUp === "ArrowDown") {
             downKeyPressed = false
-            if(upKeyPressed){
-                game.player.directionY = -2
-            }else{
-                
+            if (upKeyPressed) {
+                game.player.directionY = -1.8
+            } else {
+
                 game.player.directionY = 0
             }
         }
-        if(keyUp === "ArrowLeft"){
+        if (keyUp === "ArrowLeft") {
             leftKeyPressed = false
-            if(rightKeyPressed){
-                game.player.directionX = 2
-            }else{
+            if (rightKeyPressed) {
+                game.player.directionX = 1.8
+            } else {
                 game.player.directionX = 0
-                
+
             }
         }
-        if(keyUp === "ArrowRight"){
+        if (keyUp === "ArrowRight") {
             rightKeyPressed = false
-            if(leftKeyPressed){
-                game.player.directionX = -2
-            }else{
+            if (leftKeyPressed) {
+                game.player.directionX = -1.8
+            } else {
                 game.player.directionX = 0
-                
+
             }
         }
-        if(event.code === "Space"){
+        if (event.code === "Space") {
             shootOnce = false
         }
     })
-    
-    restartButton.addEventListener('click', ()=>{
+
+    restartButton.addEventListener('click', () => {
         location.reload()
     })
 

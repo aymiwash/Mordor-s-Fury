@@ -7,15 +7,17 @@ class Game {
         this.healthDiv = document.querySelector("#health")
         this.scoreDiv = document.querySelector("#score")
         this.score = 0
-        this.width = 450
-        this.height = 450
+        this.width = 550
+        this.height = 550
         this.player = new Player(this.gameScreen)
         this.ennemies = []
         this.intervalID = 0
+        this.intervalIDOfLoop = 0
         this.ennemiesWave = 0
         this.introAudio = document.querySelector("#intro-audio")
         this.fightAudio = new Audio("/sounds/fight-audio.mp3")
         this.volume = 0.4
+        this.ennemySpeed = 0.4
     }
 
 
@@ -24,7 +26,7 @@ class Game {
         //hiding startscreen
         this.startScreen.style.display = "none"
         this.introAudio.pause()
-        this.fightAudio.play()
+        //this.fightAudio.play()
         this.fightAudio.volume = this.volume
 
 
@@ -39,9 +41,10 @@ class Game {
                 this.ennemies.push(ennemy)
                 ennemy.ennemyAppears()
             }
-
+            this.ennemySpeed += 0.1
             this.ennemiesWave += 1
-        }, 4000)
+
+        }, 5000)
 
         this.gameLoop()
     }
@@ -77,61 +80,68 @@ class Game {
     }
 
     gameLoop() {
-        //player movement
-        this.player.move()
-        //ennemies movement
-        this.ennemies.forEach((ennemy) => {
-            ennemy.ennemyMovement()
-        })
 
-        this.ennemies.forEach((ennemy) => {
-            const randomSpeed = Math.random()
-            if (this.player.top > ennemy.top) {
-                ennemy.directionY = randomSpeed
-            }
-            if (this.player.top < ennemy.top) {
-                ennemy.directionY = -randomSpeed
-            }
-            if (this.player.left > ennemy.left) {
-                ennemy.directionX = randomSpeed
-            }
-            if (this.player.left < ennemy.left) {
-                ennemy.directionX = -randomSpeed
-            }
-        })
+        this.intervalIDOfLoop = setInterval(() => {
 
-        //projectiles movement
-        this.player.projectiles.forEach((projectile, index) => {
-            projectile.projectileMovement()
-            if (projectile.top < 0 + projectile.height || projectile.top > 450 || projectile.left < 0 + projectile.width || projectile.left > 450) {
-                this.player.projectiles.splice(index, 1)
-            }
-        })
 
-        //collisions
-        this.didProjectileHitEnnemy()
-        this.didEnnemyHitPlayer()
-
-        //player dies
-        if (this.player.health <= 0) {
-            clearInterval(this.intervalID)
-            this.player.playerDiv.remove()
-            delete this.player
-            this.ennemies.forEach((ennemy)=>{
-                ennemy.ennemy.remove()
+            //player movement
+            this.player.move()
+            //ennemies movement
+            this.ennemies.forEach((ennemy) => {
+                ennemy.ennemyMovement()
             })
-            delete this.ennemies
-            this.endScreen.style.display = "flex"
-            const endScore = document.querySelector(".score-screen")
-            endScore.textContent = `Your score is ${this.score}`
 
-            this.fightAudio.pause()
-            console.log("game over");
-        }
+            this.ennemies.forEach((ennemy) => {
+                const randomSpeed = Math.random() * this.ennemySpeed
+                if (this.player.top > ennemy.top) {
+                    ennemy.directionY = randomSpeed
+                }
+                if (this.player.top < ennemy.top) {
+                    ennemy.directionY = -randomSpeed
+                }
+                if (this.player.left > ennemy.left) {
+                    ennemy.directionX = randomSpeed
+                }
+                if (this.player.left < ennemy.left) {
+                    ennemy.directionX = -randomSpeed
+                }
+            })
 
+            //projectiles movement
+            this.player.projectiles.forEach((projectile, index) => {
+                projectile.projectileMovement()
+                if (projectile.top < 0 + projectile.height || projectile.top > this.height || projectile.left < 0 + projectile.width || projectile.left > this.width) {
+                    this.player.projectiles.splice(index, 1)
+                }
+            })
 
+            //collisions
+            this.didProjectileHitEnnemy()
+            this.didEnnemyHitPlayer()
 
-        requestAnimationFrame(() => this.gameLoop())
+            //player dies
+            if (this.player.health <= 0) {
+                clearInterval(this.intervalID)
+                clearInterval(this.intervalIDOfLoop)
+
+                this.ennemies.forEach((ennemy) => {
+                    ennemy.ennemy.remove()
+                })
+                this.player.projectiles.forEach((projectile) => {
+                    projectile.projectile.remove()
+                })
+                this.player.playerDiv.remove()
+                delete this.player
+                delete this.ennemies
+                this.endScreen.style.display = "flex"
+                const endScore = document.querySelector(".score-screen")
+                endScore.textContent = `Your score is ${this.score}`
+
+                this.fightAudio.pause()
+                console.log("game over");
+            }
+
+        }, 6)
     }
 
 

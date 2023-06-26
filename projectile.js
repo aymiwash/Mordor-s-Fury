@@ -1,5 +1,6 @@
 class Projectile {
-    constructor(playerTop, playerLeft, directionX, directionY) {
+    constructor(playerTop, playerLeft, directionX, directionY, gameScreen) {
+        this.gameScreen = gameScreen
         this.player = player
         this.projectile = document.createElement("div")
         this.projectile.classList.add('projectile')
@@ -31,13 +32,13 @@ class Projectile {
         if (this.top < 0 + this.height) {
             this.projectile.remove()
         }
-        if (this.top > 450) {
+        if (this.top > this.gameScreen.height) {
             this.projectile.remove()
         }
         if (this.left < 0 + this.width) {
             this.projectile.remove()
         }
-        if (this.left > 450) {
+        if (this.left > this.gameScreen.width) {
             this.projectile.remove()
         }
 

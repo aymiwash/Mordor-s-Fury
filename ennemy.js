@@ -15,8 +15,7 @@ class Ennemy {
     }
 
     ennemyAppears() {
-        this.ennemy
-        this.ennemyClass
+
 
         //take a random integer between 1 and 4 included refering to the 4 sides of gameScreen
         const randomSide = Math.ceil(Math.random() * 4)
@@ -38,10 +37,14 @@ class Ennemy {
             this.top = this.maxTop
             this.left = randomLeft
         }
+        
 
         document.querySelector("#game-screen").append(this.ennemy)
         this.ennemy.style.width = `${this.width}px`
         this.ennemy.style.height = `${this.height}px`
+        this.ennemy
+        this.ennemyClass
+
     }
 
     ennemyMovement() {

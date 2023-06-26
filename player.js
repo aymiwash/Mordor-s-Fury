@@ -5,8 +5,8 @@ class Player {
         this.health = 100
         this.level = 0
         this.experience = 0
-        this.top = 218
-        this.left = 218
+        this.top = 260
+        this.left = 260
         this.width = 23
         this.height = 30
         this.directionX = 0
@@ -17,6 +17,8 @@ class Player {
         this.score = 0
         this.projectiles = []
         this.projectile = new Projectile(this.top, this.left)
+        this.gameScreenHeight = this.gameScreen.height
+        this.gameScreenWidth = this.gameScreen.width
     }
 
     move() {
@@ -26,14 +28,14 @@ class Player {
         if (this.top < 0) {
             this.top = 0
         }
-        if (this.top > 450 - this.height) {
-            this.top = 450 - this.height
+        if (this.top > 550 - this.height) {
+            this.top = 550 - this.height
         }
         if (this.left < 0) {
             this.left = 0
         }
-        if (this.left > 450 - this.width) {
-            this.left = 450 - this.width
+        if (this.left > 550 - this.width) {
+            this.left = 550 - this.width
         }
 
         this.updatePosition()
@@ -47,23 +49,23 @@ class Player {
         //direction of projectile when player doesnt move
         if (this.directionX === 0 && this.directionY === 0) {
             if (this.currentDirection === "left") {
-                this.directionXOfProj = -7
+                this.directionXOfProj = -6
                 this.directionYOfProj = 0
             }
             if (this.currentDirection === "right") {
-                this.directionXOfProj = 7
+                this.directionXOfProj = 6
                 this.directionYOfProj = 0
             }
             if (this.currentDirection === "up") {
-                this.directionYOfProj = -7
+                this.directionYOfProj = -6
                 this.directionXOfProj = 0
             }
             if (this.currentDirection === "down") {
-                this.directionYOfProj = 7
+                this.directionYOfProj = 6
                 this.directionXOfProj = 0
             }
             else if(this.currentDirection === ""){
-                this.directionXOfProj = -7
+                this.directionXOfProj = -6
                 this.directionYOfProj = 0
             }
         }
@@ -73,29 +75,29 @@ class Player {
             if(this.directionY === 0){
                 this.directionYOfProj = 0
             }
-            this.directionXOfProj = -7
+            this.directionXOfProj = -6
         }
         if (this.directionX > 0) {
             if(this.directionY === 0){
                 this.directionYOfProj = 0
             }
-            this.directionXOfProj = 7
+            this.directionXOfProj = 6
         }
         if (this.directionY < 0) {
             if(this.directionX === 0){
                 this.directionXOfProj = 0
             }
-            this.directionYOfProj = -7
+            this.directionYOfProj = -6
         }
         if (this.directionY > 0) {
             if(this.directionX === 0){
                 this.directionXOfProj = 0
             }
-            this.directionYOfProj = 7
+            this.directionYOfProj = 6
         }
 
         //creation of projectile
-        const projectile = new Projectile(middleTop, middleLeft, this.directionXOfProj, this.directionYOfProj)
+        const projectile = new Projectile(middleTop, middleLeft, this.directionXOfProj, this.directionYOfProj, this.gameScreen)
         this.projectiles.push(projectile)
         projectile.projectileShot()
     }
