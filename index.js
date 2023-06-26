@@ -11,19 +11,24 @@ window.addEventListener('load', () => {
     let upKeyPressed = false
     let downKeyPressed = false
 
+
+    document.addEventListener("keydown", (event)=>{
+        console.log(event);
+    })
+
     //introAudio.volume = 0.4
 
     //trolling
     //keyUp
     document.querySelector('.up').addEventListener("mousedown", () => {
         const keyDownUpEvent = new KeyboardEvent("keydown", {
-            key: "ArrowUp",
+            code: "ArrowUp",
         });
         document.dispatchEvent(keyDownUpEvent);
     })
     document.querySelector('.up').addEventListener("mouseup", () => {
         const keyUpUpEvent = new KeyboardEvent("keyup", {
-            key: "ArrowUp",
+            code: "ArrowUp",
         });
         document.dispatchEvent(keyUpUpEvent);
     })
@@ -31,13 +36,13 @@ window.addEventListener('load', () => {
     //keydown
     document.querySelector('.down').addEventListener("mousedown", () => {
         const keyDownDownEvent = new KeyboardEvent("keydown", {
-            key: "ArrowDown",
+            code: "ArrowDown",
         });
         document.dispatchEvent(keyDownDownEvent);
     })
     document.querySelector('.down').addEventListener("mouseup", () => {
         const keyUpDownEvent = new KeyboardEvent("keyup", {
-            key: "ArrowDown",
+            code: "ArrowDown",
         });
         document.dispatchEvent(keyUpDownEvent);
     })
@@ -45,13 +50,13 @@ window.addEventListener('load', () => {
     //keyleft
     document.querySelector('.left').addEventListener("mousedown", () => {
         const keyDownLeftEvent = new KeyboardEvent("keydown", {
-            key: "ArrowLeft",
+            code: "ArrowLeft",
         });
         document.dispatchEvent(keyDownLeftEvent);
     })
     document.querySelector('.left').addEventListener("mouseup", () => {
         const keyUpLeftEvent = new KeyboardEvent("keyup", {
-            key: "ArrowLeft",
+            code: "ArrowLeft",
         });
         document.dispatchEvent(keyUpLeftEvent);
     })
@@ -59,13 +64,13 @@ window.addEventListener('load', () => {
     //keyright
     document.querySelector('.right').addEventListener("mousedown", () => {
         const keyDownRightEvent = new KeyboardEvent("keydown", {
-            key: "ArrowRight",
+            code: "ArrowRight",
         });
         document.dispatchEvent(keyDownRightEvent);
     })
     document.querySelector('.right').addEventListener("mouseup", () => {
         const keyUpRightEvent = new KeyboardEvent("keyup", {
-            key: "ArrowRight",
+            code: "ArrowRight",
         });
         document.dispatchEvent(keyUpRightEvent);
     })
@@ -92,7 +97,7 @@ window.addEventListener('load', () => {
 
     /*Arrow keys handling*/
     document.addEventListener("keydown", (event) => {
-        switch (event.key) {
+        switch (event.code) {
             case "ArrowUp":
                 upKeyPressed = true
                 game.player.directionY = -1.8
@@ -125,7 +130,7 @@ window.addEventListener('load', () => {
 
     //on keyUp, set the playerdirection 
     document.addEventListener("keyup", (event) => {
-        const keyUp = event.key
+        const keyUp = event.code
         if (keyUp === "ArrowUp") {
             upKeyPressed = false
             if (downKeyPressed) {
