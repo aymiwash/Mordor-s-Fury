@@ -13,6 +13,76 @@ window.addEventListener('load', () => {
 
     //introAudio.volume = 0.4
 
+    //trolling
+    //keyUp
+    document.querySelector('.up').addEventListener("mousedown", () => {
+        const keyDownUpEvent = new KeyboardEvent("keydown", {
+            key: "ArrowUp",
+        });
+        document.dispatchEvent(keyDownUpEvent);
+    })
+    document.querySelector('.up').addEventListener("mouseup", () => {
+        const keyUpUpEvent = new KeyboardEvent("keyup", {
+            key: "ArrowUp",
+        });
+        document.dispatchEvent(keyUpUpEvent);
+    })
+
+    //keydown
+    document.querySelector('.down').addEventListener("mousedown", () => {
+        const keyDownDownEvent = new KeyboardEvent("keydown", {
+            key: "ArrowDown",
+        });
+        document.dispatchEvent(keyDownDownEvent);
+    })
+    document.querySelector('.down').addEventListener("mouseup", () => {
+        const keyUpDownEvent = new KeyboardEvent("keyup", {
+            key: "ArrowDown",
+        });
+        document.dispatchEvent(keyUpDownEvent);
+    })
+
+    //keyleft
+    document.querySelector('.left').addEventListener("mousedown", () => {
+        const keyDownLeftEvent = new KeyboardEvent("keydown", {
+            key: "ArrowLeft",
+        });
+        document.dispatchEvent(keyDownLeftEvent);
+    })
+    document.querySelector('.left').addEventListener("mouseup", () => {
+        const keyUpLeftEvent = new KeyboardEvent("keyup", {
+            key: "ArrowLeft",
+        });
+        document.dispatchEvent(keyUpLeftEvent);
+    })
+
+    //keyright
+    document.querySelector('.right').addEventListener("mousedown", () => {
+        const keyDownRightEvent = new KeyboardEvent("keydown", {
+            key: "ArrowRight",
+        });
+        document.dispatchEvent(keyDownRightEvent);
+    })
+    document.querySelector('.right').addEventListener("mouseup", () => {
+        const keyUpRightEvent = new KeyboardEvent("keyup", {
+            key: "ArrowRight",
+        });
+        document.dispatchEvent(keyUpRightEvent);
+    })
+    //keyspace
+    document.querySelector('.space').addEventListener("mousedown", () => {
+        const keyDownSpaceEvent = new KeyboardEvent("keydown", {
+            code: "Space",
+        });
+        document.dispatchEvent(keyDownSpaceEvent);
+    })
+    document.querySelector('.space').addEventListener("mouseup", () => {
+        const keyUpSpaceEvent = new KeyboardEvent("keyup", {
+            code: "Space",
+        });
+        document.dispatchEvent(keyUpSpaceEvent);
+    })
+
 
     /*Starting game*/
     startButton.addEventListener("click", () => {

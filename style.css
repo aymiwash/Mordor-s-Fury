@@ -335,7 +335,12 @@ main {
     font-size: 2.3rem;
     font-weight: bold;
     color: rgb(250, 250, 250);
-    display: none
+    display: none;
+    padding: 200px 0 200px 0;
+}
+
+.score-screen{
+    margin-top: 50px;
 }
 
 #restart-button {
@@ -373,16 +378,41 @@ main {
     width: 400px;
 }
 
-.instructions p {
-    margin-bottom: 30px;
-    text-align: center;
-}
-
 .keys {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    position: relative;
+}
+
+.instructions .how-to-play {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.key-instruction{
+    font-size: 1.5rem;
+    position: absolute;
+}
+
+.instruction-up{
+    left: 80px;
+    top: 20px
+}
+.instruction-down{
+
+}
+.instruction-left{
+    left : -10px
+    
+}
+.instruction-right{
+    left : 400px
+    
+}
+.instruction-space{
+    
 }
 
 .three-arrows {
@@ -395,6 +425,7 @@ main {
     border: solid 2px black;
     height: 50px;
     display: flex;
+    font-weight: bold;
     justify-content: center;
     align-items: center;
     padding: 5px 20px 15px 10px;
