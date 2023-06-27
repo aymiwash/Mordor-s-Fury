@@ -10,7 +10,7 @@ window.addEventListener('load', () => {
     let rightKeyPressed = false
     let upKeyPressed = false
     let downKeyPressed = false
-
+    introAudio.play()
     introAudio.volume = 0.4
 
     //trolling
