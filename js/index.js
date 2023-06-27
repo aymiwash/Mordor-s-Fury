@@ -10,7 +10,7 @@ window.addEventListener('load', () => {
     let rightKeyPressed = false
     let upKeyPressed = false
     let downKeyPressed = false
-    
+
     setTimeout(()=>{
         introAudio.play()
         introAudio.volume = 0.4
@@ -91,6 +91,7 @@ window.addEventListener('load', () => {
 
     /*Starting game*/
     startButton.addEventListener("click", () => {
+        introAudio.pause()
         game = new Game
         game.start()
     })
