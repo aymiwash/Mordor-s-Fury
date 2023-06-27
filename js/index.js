@@ -3,7 +3,7 @@ window.addEventListener('load', () => {
 
     const startButton = document.querySelector("#start-button")
     const restartButton = document.querySelector('#restart-button')
-    const introAudio = document.querySelector("#intro-audio")
+    const introAudio = new Audio("./sounds/lotr-intro.mp3")
     let game
     let shootOnce = false
     let leftKeyPressed = false
