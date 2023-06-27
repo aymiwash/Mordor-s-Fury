@@ -160,7 +160,6 @@ main {
 /*GAMESCREEN CONTENT*/
 
 #game-screen {
-    background-color: black;
     background-image: url("/images/grass_background.png");
     background-repeat: no-repeat;
     background-size: cover;
@@ -199,6 +198,10 @@ main {
     bottom: 5px;
 }
 
+.pixelart{
+    image-rendering: pixelated;
+}
+
 #player {
     position: absolute;
     /*background-color: blue;*/
@@ -206,38 +209,60 @@ main {
     overflow: hidden;
 }
 
+.test{
+    background-color: red;
+    width: 39px;
+    height: 59px;
+    overflow: hidden;
+}
+.test img{
+    width:1100px;
+    left : 1000px;
+
+    animation : character 0.5s steps(6) infinite
+}
+
+/*CHARACTER MOVEMENT*/
 @keyframes character {
     from{
         transform : translate3d(-48px, -40px, 0)
     }
     to {
-        transform: translate3d(-54%, -40px, 0);
+        transform: translate3d(-79.5%, -40px, 0);
     }
 }
 
 @keyframes moveCharacterRight {
     from{
-        transform : translate3d(-48px, -180px, 0)
+        transform : translate3d(-48px, -310px, 0);
     }
     to {
-        transform: translate3d(-54%, -180px, 0);
+        transform: translate3d(-79.5%, -310px, 0);
     }
 }
 
 @keyframes moveCharacterLeft {
     from{
-        transform : translate3d(-48px, -180px, 0)
+        transform : translate3d(325px, -310px, 0);
     }
     to {
-        transform: translate3d(-54%, -180px, 0);
+        transform: translate3d(104.5%, -310px, 0);
     }
 }
 
 #player img {
-
     width:1100px;
     left : 1000px;
-    animation : character 0.5s steps(4) infinite
+}
+.character-not-moving{
+    animation : character 0.5s steps(6) infinite
+}
+.character-move-left{
+    scale: -1 1;
+    animation : moveCharacterLeft 0.5s steps(6) infinite
+}
+.character-move-right{
+    animation : moveCharacterRight 0.5s steps(6) infinite
 }
 
 /*PROJECTILE AND ENNEMY*/
@@ -269,23 +294,16 @@ main {
 
 @keyframes moveEnnemyLeft {
     from{
-        transform : translate3d(-23px, -110px, 0)
+        transform : translate3d(-23px, -110px, 0);
+        transform :scaleX(-1)
     }
     to {
         transform: translate3d(-85%, -110px, 0);
+        transform :scaleX(-1)
     }
 }
 
-.test{
-    
-    width: 34px;
-    height: 50px;
-    overflow: hidden;
-}
-.test img{
-    width: 400px;
-    animation : moveEnnemyRight 0.5s steps(4) infinite
-}
+
 
 
 /* START SCREEN */

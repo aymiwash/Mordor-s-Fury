@@ -112,11 +112,15 @@ window.addEventListener('load', () => {
                 leftKeyPressed = true
                 game.player.directionX = -1.8
                 game.player.currentDirection = "left"
+                game.player.playerImg.removeAttribute('class')
+                game.player.playerImg.classList.add('character-move-left')
                 break;
             case "ArrowRight":
                 rightKeyPressed = true
                 game.player.directionX = 1.8
                 game.player.currentDirection = "right"
+                game.player.playerImg.removeAttribute('class')
+                game.player.playerImg.classList.add('character-move-right')
                 break;
         }
         if (game.player) {

@@ -4,6 +4,7 @@ class Player {
         this.playerDiv = document.querySelector('#player')
         this.playerImg = document.createElement('img')
         this.playerImg.src = "./images/character.png"
+        this.playerImg.classList.add('character-not-moving')
         this.playerDiv.append(this.playerImg)
         this.health = 100
         this.level = 0

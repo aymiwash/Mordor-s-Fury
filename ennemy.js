@@ -4,6 +4,7 @@ class Ennemy {
         this.ennemyClass = this.ennemy.classList.add("ennemy")
         this.ennemyImg = document.createElement('img')
         this.ennemyImg.src = "./images/Zombie_Small.png"
+        this.ennemyImg.classList.add('pixelart')
         this.ennemy.append(this.ennemyImg)
         this.maxTop = maxTop
         this.maxLeft = maxLeft
