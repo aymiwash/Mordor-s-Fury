@@ -73,8 +73,6 @@ class Game {
                 ennemy.ennemy.remove()
                 this.ennemies.splice(indexE, 1)
                 this.player.health -= 10
-
-                console.log(this.player.health);
             }
 
         })
@@ -139,9 +137,7 @@ class Game {
                 this.endScreen.style.display = "flex"
                 const endScore = document.querySelector(".score-screen")
                 endScore.textContent = `Your score is ${this.score}`
-
                 this.fightAudio.pause()
-                console.log("game over");
             }
 
         }, 6)
