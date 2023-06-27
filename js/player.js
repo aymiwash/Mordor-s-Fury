@@ -6,6 +6,7 @@ class Player {
         this.playerImg.src = "./images/character.png"
         this.playerImg.classList.add('character-not-moving')
         this.playerDiv.append(this.playerImg)
+        this.playerHealth = document.querySelector("#health")
         this.health = 100
         this.level = 0
         this.experience = 0

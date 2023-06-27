@@ -15,7 +15,7 @@ class Game {
         this.intervalIDOfLoop = 0
         this.ennemiesWave = 0
         this.introAudio = document.querySelector("#intro-audio")
-        this.fightAudio = new Audio("/sounds/fight-audio.mp3")
+        this.fightAudio = new Audio("./sounds/fight-audio.mp3")
         this.volume = 0.4
         this.ennemySpeed = 0.4
     }
@@ -83,6 +83,8 @@ class Game {
     gameLoop() {
 
         this.intervalIDOfLoop = setInterval(() => {
+
+            this.player.playerHealth.textContent = `Health ${this.player.health}/100`
 
 
             //player movement

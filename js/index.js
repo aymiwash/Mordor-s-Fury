@@ -16,7 +16,7 @@ window.addEventListener('load', () => {
         console.log(event);
     })
 
-    //introAudio.volume = 0.4
+    introAudio.volume = 0.4
 
     //trolling
     //keyUp
