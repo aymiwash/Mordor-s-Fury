@@ -22,7 +22,7 @@
     </header>
     <main>
 
-        <!-- <div class="test"><img src="/images/character.png" alt=""></div> -->
+        <div class="test"><img src="/images/character.png" alt="" class="character-not-moving-left"></div>
         <aside class="instructions">
             <p class="how-to-play">How to play :</p>
             <div class="keys">
@@ -41,7 +41,7 @@
         <section id="game-screen">
             <div id="level" class="game-infos">Lvl.0</div>
             <div id="health" class="game-infos">Health 100/100</div>
-            <div id="score" class="game-infos">score</div>
+            <div id="score" class="game-infos">Score: 00000</div>
 
             <!-- player -->
             <div id="player">
@@ -72,10 +72,7 @@
 
     <footer>My social media, linked in, github and stuffs</footer>
     <iframe src="./sounds/silence.mp3" allow="autoplay" id="audio" style="display: none"></iframe>
-    <div class="audio">
-        <div class="play-song"></div>
-        <audio id="intro-audio" controls loop src="./sounds/lotr-intro.mp3" id="intro-audio"></audio>
-    </div>
+        <!-- <audio id="intro-audio" autoplay loop src="./sounds/lotr-intro.mp3" id="intro-audio"></audio> -->
     <script src="./js/projectile.js"></script>
     <script src="./js/player.js"></script>
     <script src="./js/ennemy.js"></script>

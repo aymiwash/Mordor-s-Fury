@@ -201,31 +201,25 @@ main {
 
 #player {
     position: absolute;
-    /*background-color: blue;*/
     display: none;
     overflow: hidden;
 }
 
-.test{
-    background-color: red;
-    width: 39px;
-    height: 59px;
-    overflow: hidden;
-}
-.test img{
-    width:1100px;
-    left : 1000px;
-
-    animation : character 0.5s steps(6) infinite
-}
-
 /*CHARACTER MOVEMENT*/
-@keyframes character {
+@keyframes character-right {
     from{
         transform : translate3d(-48px, -40px, 0)
     }
     to {
         transform: translate3d(-79.5%, -40px, 0);
+    }
+}
+@keyframes character-left {
+    from{
+        transform : translate3d(325px, -40px, 0)
+    }
+    to {
+        transform: translate3d(104.5%, -40px, 0);
     }
 }
 
@@ -251,8 +245,25 @@ main {
     width:1100px;
     left : 1000px;
 }
-.character-not-moving{
-    animation : character 0.5s steps(6) infinite
+
+.test{
+    
+    width: 40px;
+    height: 60px;
+    overflow: hidden;
+    
+}
+.test img{
+    width:1100px;
+    left :1000px;
+}
+
+.character-not-moving-right{
+    animation : character-right 0.5s steps(6) infinite
+}
+.character-not-moving-left{
+    scale: -1 1;
+    animation : character-left 0.5s steps(6) infinite
 }
 .character-move-left{
     scale: -1 1;
@@ -276,27 +287,32 @@ main {
 }
 .ennemy img{
     width: 400px;
-    animation : moveEnnemyRight 0.5s steps(4) infinite
 }
 
+.ennemyMoveLeft{
+    scale: -1 1;
+    animation : moveEnnemyLeft 1s steps(5) infinite
+}
+
+.ennemyMoveRight{
+    animation : moveEnnemyRight 1s steps(5) infinite
+}
 
 @keyframes moveEnnemyRight {
     from{
-        transform : translate3d(-23px, -105px, 0)
+        transform : translate3d(-22px, -105px, 0)
     }
     to {
-        transform: translate3d(-85%, -105px, 0);
+        transform: translate3d(-105%, -105px, 0);
     }
 }
 
 @keyframes moveEnnemyLeft {
     from{
-        transform : translate3d(-23px, -110px, 0);
-        transform :scaleX(-1)
+        transform : translate3d(21px, -105px, 0);
     }
     to {
-        transform: translate3d(-85%, -110px, 0);
-        transform :scaleX(-1)
+        transform: translate3d(105%, -105px, 0);
     }
 }
 

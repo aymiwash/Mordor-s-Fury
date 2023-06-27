@@ -4,7 +4,7 @@ window.addEventListener('load', () => {
     const startButton = document.querySelector("#start-button")
     const restartButton = document.querySelector('#restart-button')
     const introAudio = document.querySelector("#intro-audio")
-    const audioButton = document.querySelector(".play-song")
+
     let game
     let shootOnce = false
     let leftKeyPressed = false
@@ -12,9 +12,7 @@ window.addEventListener('load', () => {
     let upKeyPressed = false
     let downKeyPressed = false
 
-    audioButton.click()
-    introAudio.volume = 0.4
-
+    //introAudio.volume = 0.4
     
 
     //trolling
@@ -90,10 +88,10 @@ window.addEventListener('load', () => {
 
     /*Starting game*/
     startButton.addEventListener("click", () => {
-        introAudio.pause()
         game = new Game
         game.start()
     })
+
 
     /*Arrow keys handling*/
     document.addEventListener("keydown", (event) => {
@@ -159,6 +157,9 @@ window.addEventListener('load', () => {
                 game.player.directionX = 1.8
             } else {
                 game.player.directionX = 0
+                game.player.playerImg.removeAttribute('class')
+                game.player.playerImg.classList.add('character-not-moving-left')
+                
 
             }
         }
@@ -168,6 +169,8 @@ window.addEventListener('load', () => {
                 game.player.directionX = -1.8
             } else {
                 game.player.directionX = 0
+                game.player.playerImg.removeAttribute('class')
+                game.player.playerImg.classList.add('character-not-moving-right')
 
             }
         }

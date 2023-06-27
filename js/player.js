@@ -4,7 +4,7 @@ class Player {
         this.playerDiv = document.querySelector('#player')
         this.playerImg = document.createElement('img')
         this.playerImg.src = "./images/character.png"
-        this.playerImg.classList.add('character-not-moving')
+        this.playerImg.classList.add('character-not-moving-right')
         this.playerDiv.append(this.playerImg)
         this.playerHealth = document.querySelector("#health")
         this.health = 100
@@ -29,6 +29,7 @@ class Player {
     move() {
         this.left += this.directionX
         this.top += this.directionY
+
         //Setting border limits for player movement
         if (this.top < 0) {
             this.top = 0

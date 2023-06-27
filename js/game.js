@@ -7,6 +7,7 @@ class Game {
         this.healthDiv = document.querySelector("#health")
         this.scoreDiv = document.querySelector("#score")
         this.score = 0
+        this.scoreIn5Digits = []
         this.width = 550
         this.height = 550
         this.player = new Player(this.gameScreen)
@@ -14,7 +15,7 @@ class Game {
         this.intervalID = 0
         this.intervalIDOfLoop = 0
         this.ennemiesWave = 0
-        this.introAudio = document.querySelector("#intro-audio")
+        //this.introAudio = document.querySelector("#intro-audio")
         this.fightAudio = new Audio("./sounds/fight-audio.mp3")
         this.volume = 0.4
         this.ennemySpeed = 0.4
@@ -25,7 +26,7 @@ class Game {
     start() {
         //hiding startscreen
         this.startScreen.style.display = "none"
-        this.introAudio.pause()
+        //this.introAudio.pause()
         this.fightAudio.play()
         this.fightAudio.volume = this.volume
 
@@ -60,11 +61,25 @@ class Game {
                     this.ennemies.splice(indexE, 1)
                     this.player.projectiles.splice(indexP, 1)
                     this.score += 10
-                    this.scoreDiv.textContent = this.score
                 }
             })
         })
+        
     }
+
+    // displayScore5Digits(){
+    //     console.log(this.scoreIn5Digits);
+    //     for(let i = 0 ; i < this.score.length; i ++){
+    //         this.scoreIn5Digits.push(this.score[i])
+    //     }
+    //     // while(this.scoreIn5Digits.length < 5){
+    //     //     this.scoreIn5Digits.unshift(0)
+    //     // }
+    //     const scoreToDisplay = this.scoreIn5Digits.join("")
+    //     console.log(this.score, scoreToDisplay)
+
+    //     this.scoreDiv.textContent = `Score: ${scoreToDisplay}`
+    // }
 
     //deals 10 dmg to player when ennemy hit him
     didEnnemyHitPlayer() {
@@ -102,9 +117,13 @@ class Game {
                 }
                 if (this.player.left > ennemy.left) {
                     ennemy.directionX = randomSpeed
+                    ennemy.ennemyImg.removeAttribute('class')
+                    ennemy.ennemyImg.classList.add('ennemyMoveRight')
                 }
-                if (this.player.left < ennemy.left) {
+                if (this.player.left + this.player.width < ennemy.left) {
                     ennemy.directionX = -randomSpeed
+                    ennemy.ennemyImg.removeAttribute('class')
+                    ennemy.ennemyImg.classList.add('ennemyMoveLeft')
                 }
             })
 
@@ -115,6 +134,9 @@ class Game {
                     this.player.projectiles.splice(index, 1)
                 }
             })
+
+            //score updates
+            //this.displayScore5Digits()
 
             //collisions
             this.didProjectileHitEnnemy()

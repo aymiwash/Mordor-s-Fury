@@ -4,14 +4,14 @@ class Ennemy {
         this.ennemyClass = this.ennemy.classList.add("ennemy")
         this.ennemyImg = document.createElement('img')
         this.ennemyImg.src = "./images/Zombie_Small.png"
-        this.ennemyImg.classList.add('pixelart')
+        this.ennemyImg.classList.add('ennemyMoveLeft')
         this.ennemy.append(this.ennemyImg)
         this.maxTop = maxTop
         this.maxLeft = maxLeft
         this.top = 0
         this.left = 0
-        this.width = 34
-        this.height = 50
+        this.width = 37
+        this.height = 55
         this.directionX = 0
         this.directionY = 0
         this.health = 10
