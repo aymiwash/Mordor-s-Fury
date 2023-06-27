@@ -11,10 +11,6 @@ window.addEventListener('load', () => {
     let upKeyPressed = false
     let downKeyPressed = false
 
-
-    document.addEventListener("keydown", (event)=>{
-    })
-
     introAudio.volume = 0.4
 
     //trolling

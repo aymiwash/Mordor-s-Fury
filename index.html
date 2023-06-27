@@ -70,7 +70,12 @@
 
 
     <footer>My social media, linked in, github and stuffs</footer>
-    <audio autoplay loop src="./sounds/lotr-intro.mp3" id="intro-audio"></audio>
+    <iframe src="./sounds/silence.mp3" allow="autoplay" id="audio" style="display: none"></iframe>
+
+    <audio id="intro-audio" autoplay loop>
+        <source src="./sounds/lotr-intro.mp3" type="audio/mp3">
+    </audio>
+    
     <script src="./js/projectile.js"></script>
     <script src="./js/player.js"></script>
     <script src="./js/ennemy.js"></script>
