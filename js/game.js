@@ -17,7 +17,7 @@ class Game {
         this.ennemiesWave = 0
         //this.introAudio = document.querySelector("#intro-audio")
         this.fightAudio = new Audio("./sounds/fight-audio.mp3")
-        this.volume = 0.4
+        this.volume = 0.6
         this.ennemySpeed = 0.4
     }
 

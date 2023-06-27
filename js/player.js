@@ -8,7 +8,6 @@ class Player {
         this.playerDiv.append(this.playerImg)
         this.playerHealth = document.querySelector("#health")
         this.health = 100
-        this.level = 0
         this.experience = 0
         this.top = 260
         this.left = 260

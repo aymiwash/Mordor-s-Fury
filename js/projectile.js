@@ -4,6 +4,7 @@ class Projectile {
         this.player = player
         this.projectile = document.createElement("div")
         this.projectile.classList.add('projectile')
+        this.shootSound = new Audio("./sounds/fireball-sound.mp3")
         this.top = playerTop
         this.left = playerLeft
         this.width = 10
@@ -16,6 +17,8 @@ class Projectile {
 
     projectileShot() {
         //Start position
+        this.shootSound.play()
+        this.shootSound.volume = 0.3
         this.projectile
         this.projectileClass
         document.querySelector("#game-screen").append(this.projectile)
