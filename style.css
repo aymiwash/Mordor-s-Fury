@@ -160,7 +160,7 @@ main {
 /*GAMESCREEN CONTENT*/
 
 #game-screen {
-    background-image: url("/images/grass_background.png");
+    background-image: url("./images/grass_background.png");
     background-repeat: no-repeat;
     background-size: cover;
     border: solid black 2px;
@@ -173,6 +173,7 @@ main {
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    image-rendering: pixelated;
 }
 
 .game-infos {
@@ -196,10 +197,6 @@ main {
 #score {
     right: 5px;
     bottom: 5px;
-}
-
-.pixelart{
-    image-rendering: pixelated;
 }
 
 #player {

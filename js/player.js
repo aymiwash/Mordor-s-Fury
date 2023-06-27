@@ -68,7 +68,7 @@ class Player {
                 this.directionYOfProj = 6
                 this.directionXOfProj = 0
             }
-            else if(this.currentDirection === ""){
+            else if (this.currentDirection === "") {
                 this.directionXOfProj = -6
                 this.directionYOfProj = 0
             }
@@ -76,25 +76,25 @@ class Player {
 
         //direction of projectile when player moves
         if (this.directionX < 0) {
-            if(this.directionY === 0){
+            if (this.directionY === 0) {
                 this.directionYOfProj = 0
             }
             this.directionXOfProj = -6
         }
         if (this.directionX > 0) {
-            if(this.directionY === 0){
+            if (this.directionY === 0) {
                 this.directionYOfProj = 0
             }
             this.directionXOfProj = 6
         }
         if (this.directionY < 0) {
-            if(this.directionX === 0){
+            if (this.directionX === 0) {
                 this.directionXOfProj = 0
             }
             this.directionYOfProj = -6
         }
         if (this.directionY > 0) {
-            if(this.directionX === 0){
+            if (this.directionX === 0) {
                 this.directionXOfProj = 0
             }
             this.directionYOfProj = 6
