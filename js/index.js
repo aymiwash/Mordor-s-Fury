@@ -14,7 +14,7 @@ window.addEventListener('load', () => {
 
     document.addEventListener("keydown", (event)=>{
     })
-    introAudio.play()
+
     introAudio.volume = 0.4
 
     //trolling
