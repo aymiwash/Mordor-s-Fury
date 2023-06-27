@@ -124,6 +124,20 @@ window.addEventListener('load', () => {
         if (game.player) {
             if (event.code === "Space" && !shootOnce) {
                 game.player.shoot()
+                if(game.player.currentDirection === "right"){
+                    
+                game.player.playerImg.classList.add('character-shooting-right')
+                setTimeout(()=>{
+                    game.player.playerImg.classList.remove('character-shooting-right')
+                }, 290)
+                }
+                else{
+
+                game.player.playerImg.classList.add('character-shooting-left')
+                setTimeout(()=>{
+                    game.player.playerImg.classList.remove('character-shooting-left')
+                }, 290)
+                }
                 shootOnce = true
             }
         }

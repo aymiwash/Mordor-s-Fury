@@ -3,7 +3,7 @@ class Ennemy {
         this.ennemy = document.createElement("div")
         this.ennemyClass = this.ennemy.classList.add("ennemy")
         this.ennemyImg = document.createElement('img')
-        this.ennemyImg.src = "./images/Zombie_Small.png"
+        this.ennemyImg.src = "./images/orcs.png"
         this.ennemyImg.classList.add('ennemyMoveLeft')
         this.ennemy.append(this.ennemyImg)
         this.maxTop = maxTop
