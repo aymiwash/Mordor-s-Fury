@@ -3,7 +3,8 @@ window.addEventListener('load', () => {
 
     const startButton = document.querySelector("#start-button")
     const restartButton = document.querySelector('#restart-button')
-    const introAudio = new Audio("./sounds/lotr-intro.mp3")
+    const introAudio = document.querySelector("#intro-audio")
+    const audioButton = document.querySelector(".play-song")
     let game
     let shootOnce = false
     let leftKeyPressed = false
@@ -11,11 +12,9 @@ window.addEventListener('load', () => {
     let upKeyPressed = false
     let downKeyPressed = false
 
-    setTimeout(()=>{
-        introAudio.play()
-        introAudio.volume = 0.4
-    }, 10)
-    
+    audioButton.click()
+    introAudio.volume = 0.4
+
     
 
     //trolling
