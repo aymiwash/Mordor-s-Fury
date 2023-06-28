@@ -137,7 +137,7 @@ body {
 
 header {
     margin-top: 40px;
-    margin-bottom: 70px;
+    margin-bottom: 10px;
 
 }
 
@@ -591,6 +591,10 @@ footer {
         flex-direction: column-reverse;
         height: 80vh;
         row-gap: 10px;
+    }
+
+    .rules{
+        display: none;
     }
 
 

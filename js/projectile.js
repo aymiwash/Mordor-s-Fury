@@ -24,8 +24,7 @@ class Projectile {
         //Start position
         this.shootSound.play()
         this.shootSound.volume = 0.3
-        this.projectile
-        this.projectileClass
+    
         document.querySelector("#game-screen").append(this.projectile)
         this.projectile.style.width = `${this.width}px`
         this.projectile.style.height = `${this.height}px`
