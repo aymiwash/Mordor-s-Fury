@@ -3,12 +3,17 @@ class Projectile {
         this.gameScreen = gameScreen
         this.player = player
         this.projectile = document.createElement("div")
+        this.projectileImg = document.createElement("img")
+        this.projectileImg.src = "./images/fireball.png"
+        this.projectile.append(this.projectileImg)
         this.projectile.classList.add('projectile')
         this.shootSound = new Audio("./sounds/fireball-sound.mp3")
-        this.top = playerTop
-        this.left = playerLeft
-        this.width = 10
-        this.height = 3
+        this.playerTop = playerTop
+        this.playerLeft = playerLeft
+        this.top = this.playerTop
+        this.left = this.playerLeft
+        this.width = 44
+        this.height = 20
         this.directionX = directionX
         this.directionY = directionY
         this.projectile.style.position = "absolute"
@@ -24,10 +29,54 @@ class Projectile {
         document.querySelector("#game-screen").append(this.projectile)
         this.projectile.style.width = `${this.width}px`
         this.projectile.style.height = `${this.height}px`
+
+
+
+
+
     }
 
-    projectileMovement() { 
+    projectileMovement() {
         //direction of shoot
+
+        if (this.directionX < 0) {
+            if (this.directionY < 0) {
+                this.top = this.playerTop
+                //this.left = playerLeft
+                this.projectile.style.scale = "-1 1"
+                this.projectile.style.transform = "rotate(-45deg)"
+            }
+            else if (this.directionY > 0) {
+                this.projectile.style.scale = "-1 1"
+                this.projectile.style.transform = "rotate(45deg)"
+            } else {
+                this.projectile.style.scale = "-1 1"
+                this.projectile.style.transform = "rotate(0deg)"
+            }
+        }
+        else if (this.directionX > 0) {
+            if (this.directionY < 0) {
+                this.projectile.style.scale = "1 1"
+                this.projectile.style.transform = "rotate(-45deg)"
+            }
+            else if (this.directionY > 0) {
+                this.projectile.style.scale = "1 1"
+                this.projectile.style.transform = "rotate(45deg)"
+            } else {
+                this.projectile.style.scale = "1 1"
+                this.projectile.style.transform = "rotate(0deg)"
+            }
+        }
+        else if (this.directionY < 0) {
+            this.projectile.style.scale = "1 1"
+            this.projectile.style.transform = "rotate(-90deg)"
+        }
+        else if (this.directionY > 0) {
+            this.projectile.style.scale = "1 1"
+            this.projectile.style.transform = "rotate(90deg)"
+        }
+
+
         this.top += this.directionY
         this.left += this.directionX
 
@@ -35,13 +84,13 @@ class Projectile {
         if (this.top < 0 + this.height) {
             this.projectile.remove()
         }
-        if (this.top > this.gameScreen.height) {
+        if (this.top > 550) {
             this.projectile.remove()
         }
         if (this.left < 0 + this.width) {
             this.projectile.remove()
         }
-        if (this.left > this.gameScreen.width) {
+        if (this.left > 550) {
             this.projectile.remove()
         }
 

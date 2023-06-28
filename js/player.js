@@ -47,30 +47,27 @@ class Player {
     }
 
     shoot() {
-        //projectile spawn
-        const middleTop = this.top + this.height / 2
-        const middleLeft = this.left + this.width / 2
 
         //direction of projectile when player doesnt move
         if (this.directionX === 0 && this.directionY === 0) {
             if (this.currentDirection === "left") {
-                this.directionXOfProj = -6
+                this.directionXOfProj = -5
                 this.directionYOfProj = 0
             }
             if (this.currentDirection === "right") {
-                this.directionXOfProj = 6
+                this.directionXOfProj = 5
                 this.directionYOfProj = 0
             }
             if (this.currentDirection === "up") {
-                this.directionYOfProj = -6
+                this.directionYOfProj = -5
                 this.directionXOfProj = 0
             }
             if (this.currentDirection === "down") {
-                this.directionYOfProj = 6
+                this.directionYOfProj = 5
                 this.directionXOfProj = 0
             }
             else if (this.currentDirection === "") {
-                this.directionXOfProj = -6
+                this.directionXOfProj = -5
                 this.directionYOfProj = 0
             }
         }
@@ -100,6 +97,10 @@ class Player {
             }
             this.directionYOfProj = 6
         }
+
+        //projectile spawn
+        const middleTop = this.top + this.height / 2
+        const middleLeft = this.left + this.width / 2
 
         //creation of projectile
         const projectile = new Projectile(middleTop, middleLeft, this.directionXOfProj, this.directionYOfProj, this.gameScreen)
