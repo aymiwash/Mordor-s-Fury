@@ -54,17 +54,27 @@ class Game {
     //remove projectile and ennemy if he's touch by projectile
     didProjectileHitEnnemy() {
         this.ennemies.forEach((ennemy, indexE) => {
+            
             this.player.projectiles.forEach((projectile, indexP) => {
-                if (projectile.left < ennemy.left + ennemy.width/2 && projectile.left + projectile.width > ennemy.left + ennemy.width/2 && projectile.top + projectile.height > ennemy.top && projectile.top < ennemy.top + ennemy.width) {
-                    ennemy.ennemy.remove()
+                if (projectile.left < ennemy.left + ennemy.width / 2 && projectile.left + projectile.width > ennemy.left + ennemy.width / 2 && projectile.top + projectile.height > ennemy.top && projectile.top < ennemy.top + ennemy.width) {
+                    ennemy.ennemyDead = true
                     projectile.projectile.remove()
-                    this.ennemies.splice(indexE, 1)
                     this.player.projectiles.splice(indexP, 1)
                     this.score += 10
+                    ennemy.ennemyImg.remove()
+                    ennemy.ennemy.style.height = "47px"
+                    ennemy.ennemy.style.width = "34px"
+                    const ennemyDying = document.createElement('img')
+                    ennemyDying.classList.add("ennemy-dies")
+                    ennemyDying.src = "./images/firebullet-effects.png"
+                    ennemy.ennemy.append(ennemyDying)
+                    this.ennemies.splice(indexE, 1)
+                    ennemy.isEnnemyDead()
+
                 }
             })
         })
-        
+
     }
 
     // displayScore5Digits(){

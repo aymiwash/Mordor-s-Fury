@@ -199,11 +199,6 @@ main {
     bottom: 5px;
 }
 
-#player {
-    position: absolute;
-    display: none;
-    overflow: hidden;
-}
 
 /*CHARACTER MOVEMENT*/
 @keyframes character-right {
@@ -259,29 +254,16 @@ main {
     }
 }
 
+#player {
+    position: absolute;
+    display: none;
+    overflow: hidden;
+}
+
 #player img {
     width:1100px;
     left : 1000px;
 }
-
-.test{
-    overflow: hidden;
-    position: relative;
-    width: 44px;
-    height: 20px;
-    scale: -1 1;
-    transform: rotate(0deg);
-    /* background-color: rgba(255, 0, 0, 0.525); */
-    
-}
-
-
-.test .image-test{
-    width:250px;
-    animation : projectileShoot 0.2s steps(4) infinite
-}
-
-
 
 .character-not-moving-right{
     animation : character-right 0.5s steps(6) infinite
@@ -306,7 +288,7 @@ main {
     animation : characterShootingLeft 0.3s steps(6)
 }
 
-/*PROJECTILE AND ENNEMY*/
+/*PROJECTILE*/
 .projectile{
     top : -10px;
     left : -10px;
@@ -330,22 +312,28 @@ main {
     }
 }
 
+
+/*ENNEMY*/
 .ennemy{
     top : -10px;
     left : -10px;
     overflow: hidden;
 }
-.ennemy img{
-    width: 400px;
-}
 
 .ennemyMoveLeft{
     scale: -1 1;
-    animation : moveEnnemyLeft 1s steps(5) infinite
+    animation : moveEnnemyLeft 1s steps(5) infinite;
+    width: 400px;
 }
 
 .ennemyMoveRight{
-    animation : moveEnnemyRight 1s steps(5) infinite
+    animation : moveEnnemyRight 1s steps(5) infinite;
+    width: 400px;
+}
+
+.ennemy-dies{
+    width:1400px;
+    animation : ennemyDies 0.3s steps(4)
 }
 
 @keyframes moveEnnemyRight {
@@ -364,6 +352,29 @@ main {
     to {
         transform: translate3d(105%, -105px, 0);
     }
+}
+
+@keyframes ennemyDies {
+    from{
+        transform : translate3d(-458px, -624px, 0);
+    }
+    to {
+        transform: translate3d(-42.5%, -624px, 0);
+    }
+}
+
+.test{
+    overflow: hidden; 
+    width: 37px;
+    height: 47px;
+    /* background-color: rgba(255, 0, 0, 0.525);  */
+    
+}
+
+
+.test .image-test{
+    width:1400px;
+    animation : ennemyDies 0.3s steps(4) infinite
 }
 
 

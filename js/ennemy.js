@@ -16,6 +16,7 @@ class Ennemy {
         this.directionY = 0
         this.health = 10
         this.ennemy.style.position = "absolute"
+        this.ennemyDead = false
     }
 
     ennemyAppears() {
@@ -41,7 +42,7 @@ class Ennemy {
             this.top = this.maxTop
             this.left = randomLeft
         }
-        
+
 
         document.querySelector("#game-screen").append(this.ennemy)
         this.ennemy.style.width = `${this.width}px`
@@ -57,6 +58,15 @@ class Ennemy {
         this.updatingEnnemyPosition()
     }
 
+
+    isEnnemyDead() {
+        if (this.ennemyDead) {
+            setTimeout(() => {
+                this.ennemy.remove()
+            }, 290)
+        }
+
+    }
     updatingEnnemyPosition() {
         this.ennemy.style.top = `${this.top}px`
         this.ennemy.style.left = `${this.left}px`
