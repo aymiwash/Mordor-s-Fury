@@ -55,7 +55,7 @@ class Game {
     didProjectileHitEnnemy() {
         this.ennemies.forEach((ennemy, indexE) => {
             this.player.projectiles.forEach((projectile, indexP) => {
-                if (projectile.left < ennemy.left + ennemy.width && projectile.left + projectile.width > ennemy.left && projectile.top + projectile.height > ennemy.top && projectile.top < ennemy.top + ennemy.width) {
+                if (projectile.left < ennemy.left + ennemy.width/2 && projectile.left + projectile.width > ennemy.left + ennemy.width/2 && projectile.top + projectile.height > ennemy.top && projectile.top < ennemy.top + ennemy.width) {
                     ennemy.ennemy.remove()
                     projectile.projectile.remove()
                     this.ennemies.splice(indexE, 1)

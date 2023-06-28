@@ -31,22 +31,16 @@ class Projectile {
         this.projectile.style.height = `${this.height}px`
 
 
-
-
-
-    }
-
-    projectileMovement() {
         //direction of shoot
 
         if (this.directionX < 0) {
             if (this.directionY < 0) {
-                this.top = this.playerTop
-                //this.left = playerLeft
+                this.top = this.playerTop + this.height
                 this.projectile.style.scale = "-1 1"
                 this.projectile.style.transform = "rotate(-45deg)"
             }
             else if (this.directionY > 0) {
+                this.left = this.playerLeft - this.width/2
                 this.projectile.style.scale = "-1 1"
                 this.projectile.style.transform = "rotate(45deg)"
             } else {
@@ -56,10 +50,12 @@ class Projectile {
         }
         else if (this.directionX > 0) {
             if (this.directionY < 0) {
+                this.left = this.playerLeft - this.width/2
                 this.projectile.style.scale = "1 1"
                 this.projectile.style.transform = "rotate(-45deg)"
             }
             else if (this.directionY > 0) {
+                this.left = this.playerLeft - this.width/2
                 this.projectile.style.scale = "1 1"
                 this.projectile.style.transform = "rotate(45deg)"
             } else {
@@ -68,13 +64,21 @@ class Projectile {
             }
         }
         else if (this.directionY < 0) {
+            this.left = this.playerLeft - this.width/2
             this.projectile.style.scale = "1 1"
             this.projectile.style.transform = "rotate(-90deg)"
         }
         else if (this.directionY > 0) {
+            this.left = this.playerLeft - this.width/2
             this.projectile.style.scale = "1 1"
             this.projectile.style.transform = "rotate(90deg)"
         }
+
+
+
+    }
+
+    projectileMovement() {
 
 
         this.top += this.directionY
