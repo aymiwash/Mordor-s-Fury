@@ -7,7 +7,7 @@ class Player {
         this.playerImg.classList.add('character-not-moving-right')
         this.playerDiv.append(this.playerImg)
         this.lifeBar = document.querySelector(".life-bar")
-        this.health = 100
+        this.health = 6
         this.experience = 0
         this.top = 260
         this.left = 260
@@ -20,8 +20,6 @@ class Player {
         this.directionYOfProj = 0
         this.score = 0
         this.projectiles = []
-        this.gameScreenHeight = this.gameScreen.height
-        this.gameScreenWidth = this.gameScreen.width
     }
 
     move() {

@@ -37,6 +37,7 @@ The game ends when the player has lost all his health points.
 ## STATES
 
 - Start screen
+- Introduction screen
 - Game screen
 - End screen
 
@@ -52,7 +53,6 @@ The game ends when the player has lost all his health points.
     - this.healthDiv
     - this.scoreDiv
     - this.score
-    - this.scoreIn5Digits
     - this.width
     - this.height
     - this.player
@@ -92,8 +92,6 @@ The game ends when the player has lost all his health points.
     - this.directionYOfProj
     - this.score
     - this.projectiles
-    - this.gameScreenHeight
-    - this.gameScreenWidth
 
 - move()
 - shoot()

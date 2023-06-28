@@ -1,6 +1,5 @@
 class Projectile {
-    constructor(playerTop, playerLeft, directionX, directionY, gameScreen) {
-        this.gameScreen = gameScreen
+    constructor(playerTop, playerLeft, directionX, directionY) {
         this.player = player
         this.projectile = document.createElement("div")
         this.projectileImg = document.createElement("img")
@@ -24,14 +23,11 @@ class Projectile {
         //Start position
         this.shootSound.play()
         this.shootSound.volume = 0.3
-    
         document.querySelector("#game-screen").append(this.projectile)
         this.projectile.style.width = `${this.width}px`
         this.projectile.style.height = `${this.height}px`
 
-
-        //direction of shoot
-
+        //Direction of shoot
         if (this.directionX < 0) {
             if (this.directionY < 0) {
                 this.top = this.playerTop + this.height
@@ -72,26 +68,20 @@ class Projectile {
             this.projectile.style.scale = "1 1"
             this.projectile.style.transform = "rotate(90deg)"
         }
-
-
-
     }
 
     projectileMovement() {
 
-
         this.top += this.directionY
         this.left += this.directionX
-        //if out of gamescreen, projectile deleted from html
+        //If out of gamescreen, projectile is deleted from DOM
         if (this.top < - this.height) {
-            console.log(this.top);
             this.projectile.remove()
         }
         if (this.top > 550) {
             this.projectile.remove()
         }
         if (this.left < - this.width) {
-            console.log(this.left);
             this.projectile.remove()
         }
         if (this.left > 550) {

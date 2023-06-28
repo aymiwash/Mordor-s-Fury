@@ -1,13 +1,11 @@
 class Game {
     constructor() {
         this.gameScreen = document.querySelector("#game-screen")
-        this.startScreen = document.querySelector("#start-screen")
         this.endScreen = document.querySelector("#end-screen")
         this.levelDiv = document.querySelector("#level")
         this.healthDiv = document.querySelector("#health")
         this.scoreDiv = document.querySelector("#score")
         this.score = 0
-        this.scoreIn5Digits = ["","", "", "", ""]
         this.width = 550
         this.height = 550
         this.player = new Player(this.gameScreen)
@@ -15,18 +13,13 @@ class Game {
         this.intervalID = 0
         this.intervalIDOfLoop = 0
         this.ennemiesWave = 0
-        //this.introAudio = document.querySelector("#intro-audio")
         this.fightAudio = new Audio("./sounds/fight-audio.mp3")
         this.volume = 0.4
         this.ennemySpeed = 0.4
     }
 
 
-
     start() {
-        //hiding startscreen
-        this.startScreen.style.display = "none"
-        //this.introAudio.pause()
         this.fightAudio.play()
         this.fightAudio.volume = this.volume
 
@@ -36,7 +29,6 @@ class Game {
         this.player.playerDiv.style.width = `${this.player.width}px`
         this.player.playerDiv.style.height = `${this.player.height}px`
         this.player.playerDiv.style.display = "block"
-        this.player.move()
 
         this.intervalID = setInterval(() => {
             for (let i = 0; i < 5 + this.ennemiesWave; i++) {
@@ -81,16 +73,17 @@ class Game {
     }
 
     displayScore5Digits(){
+        const scoreIn5Digits = ["","", "", "", ""]
         if(this.score.toString().length < 5 ){
         let arrayOfScore = this.score.toString().split("").reverse()
         for(let i = 0 ; i < 5; i ++){
             if(arrayOfScore[i]){
-                this.scoreIn5Digits[i] = arrayOfScore[i]
+                scoreIn5Digits[i] = arrayOfScore[i]
             }else{
-                this.scoreIn5Digits[i]="0"
+                scoreIn5Digits[i]="0"
             }
         }   
-        const scoreToDisplay = this.scoreIn5Digits.reverse().join('')
+        const scoreToDisplay = scoreIn5Digits.reverse().join('')
         this.scoreDiv.textContent = `Score: ${scoreToDisplay}`
         }
         else{
@@ -100,30 +93,30 @@ class Game {
     }
 
 
-    //deals 10 dmg to player when ennemy hit him
+    //Deals 10 dmg to player when ennemy hit him
     didEnnemyHitPlayer() {
         this.ennemies.forEach((ennemy, indexE) => {
             if (this.player.left < ennemy.left + ennemy.width && this.player.left + this.player.width > ennemy.left && this.player.top + this.player.height > ennemy.top && this.player.top < ennemy.top + ennemy.width) {
                 ennemy.ennemy.remove()
                 this.ennemies.splice(indexE, 1)
-                this.player.health -= 10
+                this.player.health -= 1
             }
         })
 
-        //lifebar update
-        if (this.player.health < 80) {
+        //Lifebar update according to current HP
+        if (this.player.health === 5) {
             this.player.lifeBar.classList.add("life-bar80")
         }
-        if (this.player.health < 65) {
+        if (this.player.health === 4) {
             this.player.lifeBar.classList.add("life-bar65")
         }
-        if (this.player.health < 50) {
+        if (this.player.health === 3) {
             this.player.lifeBar.classList.add("life-bar50")
         }
-        if (this.player.health < 30) {
+        if (this.player.health === 2) {
             this.player.lifeBar.classList.add("life-bar30")
         }
-        if (this.player.health < 15) {
+        if (this.player.health === 1) {
             this.player.lifeBar.classList.add("life-bar15")
         }
 
@@ -133,9 +126,9 @@ class Game {
 
         this.intervalIDOfLoop = setInterval(() => {
 
-            //player movement
+            //Player movement
             this.player.move()
-            //ennemies movement
+            //Ennemies movement
             this.ennemies.forEach((ennemy) => {
                 ennemy.ennemyMovement()
             })
@@ -167,24 +160,23 @@ class Game {
                     this.player.projectiles.splice(index, 1)
                 }
             })
-
             
-
-            //score updates
+            //Score updates on DOM
             this.displayScore5Digits()
-            //this.displayScore5Digits()
 
-            //collisions
+            //Collisions 
             this.didProjectileHitEnnemy()
             this.didEnnemyHitPlayer()
 
-            //player dies
+            //When player dies
             if (this.player.health <= 0) {
                 this.player.lifeBar.classList.add("life-bar0")
 
+                //Stops the loops
                 clearInterval(this.intervalID)
                 clearInterval(this.intervalIDOfLoop)
 
+                //Remove all ennemies and projectiles from DOM
                 this.ennemies.forEach((ennemy) => {
                     ennemy.ennemy.remove()
                 })

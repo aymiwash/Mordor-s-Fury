@@ -42,8 +42,9 @@
 
         <section id="game-screen">
             <div id="health" class="game-infos">
-                                <img src="./images/lifebar.png" alt="lifebar" class="life-bar">
-                <img src="./images/lifebar.png" alt="lifebar-border" class="lifebar-border"></div>
+                <img src="./images/lifebar.png" alt="lifebar" class="life-bar">
+                <img src="./images/lifebar.png" alt="lifebar-border" class="lifebar-border">
+            </div>
             <div id="score" class="game-infos">Score: 00000</div>
 
             <!-- player -->
@@ -51,9 +52,17 @@
             </div>
 
             <!-- starting screen -->
+            <div id="intro-text">
+                <p>    In the mystical realm of the quest to find Frodo, Sam embarks on a perilous journey.</p>
+                <p>Guided by the wisdom of Gandalf, he discovers the extraordinary power to unleash fireballs.</p>
+                <p>However, his path is soon obstructed by hordes of menacing orcs, determined to impede his progress...</p>
+                <button type="button" id="play">Play</button>
+            </div>
             <div id="start-screen">
                 <button type="button" id="start-button">START</button>
             </div>
+
+            
 
             <!-- endgame screen -->
             <div id="end-screen">
@@ -74,8 +83,7 @@
 
 
     <footer>My social media, linked in, github and stuffs</footer>
-    <iframe src="./sounds/silence.mp3" allow="autoplay" id="audio" style="display: none"></iframe>
-        <!-- <audio id="intro-audio" autoplay loop src="./sounds/lotr-intro.mp3" id="intro-audio"></audio> -->
+    <audio id="intro-audio" loop src="./sounds/lotr-intro.mp3" id="intro-audio"></audio>
     <script src="./js/projectile.js"></script>
     <script src="./js/player.js"></script>
     <script src="./js/ennemy.js"></script>
