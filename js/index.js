@@ -14,6 +14,11 @@ window.addEventListener('load', () => {
 
     //introAudio.volume = 0.6
     
+    /*Starting game*/
+    startButton.addEventListener("click", () => {
+        game = new Game
+        game.start()
+    })
 
     //trolling
     //keyUp
@@ -84,14 +89,6 @@ window.addEventListener('load', () => {
         });
         document.dispatchEvent(keyUpSpaceEvent);
     })
-
-
-    /*Starting game*/
-    startButton.addEventListener("click", () => {
-        game = new Game
-        game.start()
-    })
-
 
     /*Arrow keys handling*/
     document.addEventListener("keydown", (event) => {

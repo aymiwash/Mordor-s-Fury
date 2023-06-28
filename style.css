@@ -189,9 +189,43 @@ main {
     left: 5px;
 }
 
+/*HEALTH BAR*/
+
 #health {
-    top: 5px;
-    left: 120px;
+    top: 0px;
+    left: 20px;
+    width: 105px;
+    height: 35px;
+    overflow: hidden;
+}
+
+.life-bar{
+    position: absolute;
+    width: 700px;
+    transform: translateX(-100px);
+}
+.life-bar80{
+    transform: translateX(-200px);
+}
+.life-bar65{
+    transform: translateX(-300px);
+}
+.life-bar50{
+    transform: translateX(-400px);
+}
+.life-bar30{
+    transform: translateX(-500px);
+}
+.life-bar15{
+    transform: translateX(-600px);
+}
+.life-bar0{
+    transform: translateX(-700px);
+}
+
+#health .lifebar-border{
+    position: absolute;
+    width: 700px;
 }
 
 #score {
@@ -293,8 +327,6 @@ main {
     top : -10px;
     left : -10px;
     overflow: hidden;
-    scale: -1 1;
-    transform: rotate(0deg);
 }
 
 .projectile img{
@@ -365,16 +397,18 @@ main {
 
 .test{
     overflow: hidden; 
-    width: 37px;
-    height: 47px;
+    width: 44px;
+    height: 20px;
     /* background-color: rgba(255, 0, 0, 0.525);  */
     
 }
 
 
 .test .image-test{
-    width:1400px;
-    animation : ennemyDies 0.3s steps(4) infinite
+    width:250px;
+    scale: -1 1;
+    transform: rotate(0deg);
+    animation : projectileShoot 0.2s steps(4) infinite
 }
 
 
@@ -468,7 +502,7 @@ main {
 
 .instructions {
     font-size: 2rem;
-    width: 400px;
+    width: 300px;
 }
 
 .keys {

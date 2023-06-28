@@ -7,7 +7,7 @@ class Game {
         this.healthDiv = document.querySelector("#health")
         this.scoreDiv = document.querySelector("#score")
         this.score = 0
-        this.scoreIn5Digits = []
+        this.scoreIn5Digits = ["","", "", "", ""]
         this.width = 550
         this.height = 550
         this.player = new Player(this.gameScreen)
@@ -32,6 +32,7 @@ class Game {
 
 
         // making player appear
+        this.player.lifeBar.style.tranform = "translateX(-100px)"
         this.player.playerDiv.style.width = `${this.player.width}px`
         this.player.playerDiv.style.height = `${this.player.height}px`
         this.player.playerDiv.style.display = "block"
@@ -54,13 +55,15 @@ class Game {
     //remove projectile and ennemy if he's touch by projectile
     didProjectileHitEnnemy() {
         this.ennemies.forEach((ennemy, indexE) => {
-            
+
             this.player.projectiles.forEach((projectile, indexP) => {
                 if (projectile.left < ennemy.left + ennemy.width / 2 && projectile.left + projectile.width > ennemy.left + ennemy.width / 2 && projectile.top + projectile.height > ennemy.top && projectile.top < ennemy.top + ennemy.width) {
                     ennemy.ennemyDead = true
                     projectile.projectile.remove()
                     this.player.projectiles.splice(indexP, 1)
                     this.score += 10
+
+                    //explosion sprite then delete ennemy div after 300ms
                     ennemy.ennemyImg.remove()
                     ennemy.ennemy.style.height = "47px"
                     ennemy.ennemy.style.width = "34px"
@@ -77,19 +80,25 @@ class Game {
 
     }
 
-    // displayScore5Digits(){
-    //     console.log(this.scoreIn5Digits);
-    //     for(let i = 0 ; i < this.score.length; i ++){
-    //         this.scoreIn5Digits.push(this.score[i])
-    //     }
-    //     // while(this.scoreIn5Digits.length < 5){
-    //     //     this.scoreIn5Digits.unshift(0)
-    //     // }
-    //     const scoreToDisplay = this.scoreIn5Digits.join("")
-    //     console.log(this.score, scoreToDisplay)
+    displayScore5Digits(){
+        if(this.score.toString().length < 5 ){
+        let arrayOfScore = this.score.toString().split("").reverse()
+        for(let i = 0 ; i < 5; i ++){
+            if(arrayOfScore[i]){
+                this.scoreIn5Digits[i] = arrayOfScore[i]
+            }else{
+                this.scoreIn5Digits[i]="0"
+            }
+        }   
+        const scoreToDisplay = this.scoreIn5Digits.reverse().join('')
+        this.scoreDiv.textContent = `Score: ${scoreToDisplay}`
+        }
+        else{
+            this.scoreDiv.textContent = `Score: ${this.score}`
+        }
+        
+    }
 
-    //     this.scoreDiv.textContent = `Score: ${scoreToDisplay}`
-    // }
 
     //deals 10 dmg to player when ennemy hit him
     didEnnemyHitPlayer() {
@@ -99,16 +108,30 @@ class Game {
                 this.ennemies.splice(indexE, 1)
                 this.player.health -= 10
             }
-
         })
+
+        //lifebar update
+        if (this.player.health < 80) {
+            this.player.lifeBar.classList.add("life-bar80")
+        }
+        if (this.player.health < 65) {
+            this.player.lifeBar.classList.add("life-bar65")
+        }
+        if (this.player.health < 50) {
+            this.player.lifeBar.classList.add("life-bar50")
+        }
+        if (this.player.health < 30) {
+            this.player.lifeBar.classList.add("life-bar30")
+        }
+        if (this.player.health < 15) {
+            this.player.lifeBar.classList.add("life-bar15")
+        }
+
     }
 
     gameLoop() {
 
         this.intervalIDOfLoop = setInterval(() => {
-
-            this.player.playerHealth.textContent = `Health ${this.player.health}/100`
-
 
             //player movement
             this.player.move()
@@ -145,7 +168,10 @@ class Game {
                 }
             })
 
+            
+
             //score updates
+            this.displayScore5Digits()
             //this.displayScore5Digits()
 
             //collisions
@@ -154,6 +180,8 @@ class Game {
 
             //player dies
             if (this.player.health <= 0) {
+                this.player.lifeBar.classList.add("life-bar0")
+
                 clearInterval(this.intervalID)
                 clearInterval(this.intervalIDOfLoop)
 

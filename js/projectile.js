@@ -40,7 +40,7 @@ class Projectile {
                 this.projectile.style.transform = "rotate(-45deg)"
             }
             else if (this.directionY > 0) {
-                this.left = this.playerLeft - this.width/2
+                this.left = this.playerLeft - this.width / 2
                 this.projectile.style.scale = "-1 1"
                 this.projectile.style.transform = "rotate(45deg)"
             } else {
@@ -50,12 +50,12 @@ class Projectile {
         }
         else if (this.directionX > 0) {
             if (this.directionY < 0) {
-                this.left = this.playerLeft - this.width/2
+                this.left = this.playerLeft - this.width / 2
                 this.projectile.style.scale = "1 1"
                 this.projectile.style.transform = "rotate(-45deg)"
             }
             else if (this.directionY > 0) {
-                this.left = this.playerLeft - this.width/2
+                this.left = this.playerLeft - this.width / 2
                 this.projectile.style.scale = "1 1"
                 this.projectile.style.transform = "rotate(45deg)"
             } else {
@@ -64,12 +64,12 @@ class Projectile {
             }
         }
         else if (this.directionY < 0) {
-            this.left = this.playerLeft - this.width/2
+            this.left = this.playerLeft - this.width / 2
             this.projectile.style.scale = "1 1"
             this.projectile.style.transform = "rotate(-90deg)"
         }
         else if (this.directionY > 0) {
-            this.left = this.playerLeft - this.width/2
+            this.left = this.playerLeft - this.width / 2
             this.projectile.style.scale = "1 1"
             this.projectile.style.transform = "rotate(90deg)"
         }
@@ -83,18 +83,20 @@ class Projectile {
 
         this.top += this.directionY
         this.left += this.directionX
-
         //if out of gamescreen, projectile deleted from html
         if (this.top < 0 + this.height) {
+            console.log(this.top);
             this.projectile.remove()
         }
         if (this.top > 550) {
             this.projectile.remove()
         }
         if (this.left < 0 + this.width) {
+            console.log(this.left);
             this.projectile.remove()
         }
         if (this.left > 550) {
+            
             this.projectile.remove()
         }
 

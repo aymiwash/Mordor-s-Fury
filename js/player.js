@@ -6,7 +6,7 @@ class Player {
         this.playerImg.src = "./images/character.png"
         this.playerImg.classList.add('character-not-moving-right')
         this.playerDiv.append(this.playerImg)
-        this.playerHealth = document.querySelector("#health")
+        this.lifeBar = document.querySelector(".life-bar")
         this.health = 100
         this.experience = 0
         this.top = 260
@@ -20,7 +20,6 @@ class Player {
         this.directionYOfProj = 0
         this.score = 0
         this.projectiles = []
-        this.projectile = new Projectile(this.top, this.left)
         this.gameScreenHeight = this.gameScreen.height
         this.gameScreenWidth = this.gameScreen.width
     }
