@@ -163,7 +163,7 @@ class Game {
             //projectiles movement
             this.player.projectiles.forEach((projectile, index) => {
                 projectile.projectileMovement()
-                if (projectile.top < 0 + projectile.height || projectile.top > this.height || projectile.left < 0 + projectile.width || projectile.left > this.width) {
+                if (projectile.top < 0 - projectile.height || projectile.top > this.height || projectile.left < 0 - projectile.width || projectile.left > this.width) {
                     this.player.projectiles.splice(index, 1)
                 }
             })

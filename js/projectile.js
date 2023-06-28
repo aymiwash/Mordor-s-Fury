@@ -83,14 +83,14 @@ class Projectile {
         this.top += this.directionY
         this.left += this.directionX
         //if out of gamescreen, projectile deleted from html
-        if (this.top < 0 + this.height) {
+        if (this.top < - this.height) {
             console.log(this.top);
             this.projectile.remove()
         }
         if (this.top > 550) {
             this.projectile.remove()
         }
-        if (this.left < 0 + this.width) {
+        if (this.left < - this.width) {
             console.log(this.left);
             this.projectile.remove()
         }

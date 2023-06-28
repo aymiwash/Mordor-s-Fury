@@ -66,7 +66,7 @@ class Player {
                 this.directionXOfProj = 0
             }
             else if (this.currentDirection === "") {
-                this.directionXOfProj = -5
+                this.directionXOfProj = 5
                 this.directionYOfProj = 0
             }
         }
