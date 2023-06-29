@@ -143,3 +143,9 @@ The game ends when the player has lost all his health points.
 - projectileShot()
 - projectileMovement()
 - updateProjectilePosition()
+
+## LINKS
+
+- [Slides](https://docs.google.com/presentation/d/1lB47cFazRVE_kA-93kPc_4bL3Mpm2bXGJlsar6FIDv4/edit#slide=id.p)
+- [GitHub Repository](https://github.com/aymiwash/Mordor-s-Fury)
+- [Deployment Link](https://aymiwash.github.io/Mordor-s-Fury/)

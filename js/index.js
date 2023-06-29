@@ -26,6 +26,7 @@ window.addEventListener('load', () => {
         startScreen.style.display = "none"
         introScreen.style.opacity = "0.8"
         playButton.addEventListener("click", () => {
+            playButton.disabled = true
             introAudio.pause()
             introScreen.style.opacity = 0
             setTimeout(() => {
@@ -191,8 +192,6 @@ window.addEventListener('load', () => {
                     game.player.directionX = 0
                     game.player.playerImg.removeAttribute('class')
                     game.player.playerImg.classList.add('character-not-moving-left')
-
-
                 }
             }
             if (keyUp === "ArrowRight") {
