@@ -8,6 +8,7 @@ class Player {
         this.playerDiv.append(this.playerImg)
         this.lifeBar = document.querySelector(".life-bar")
         this.health = 6
+        this.hurtSound = new Audio("./sounds/hurt-sound.mp3")
         this.experience = 0
         this.top = 260
         this.left = 260

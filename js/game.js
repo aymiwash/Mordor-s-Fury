@@ -14,6 +14,7 @@ class Game {
         this.intervalIDOfLoop = 0
         this.ennemiesWave = 0
         this.fightAudio = new Audio("./sounds/fight-audio.mp3")
+        this.orcsSound = new Audio("./sounds/orcs-sound.mp3")
         this.volume = 0.4
         this.ennemySpeed = 0.4
     }
@@ -32,6 +33,7 @@ class Game {
 
         //Waves of ennemies appears every 5sec
         this.intervalID = setInterval(() => {
+            this.orcsSound.play()
             for (let i = 0; i < 5 + this.ennemiesWave; i++) {
                 const ennemy = new Ennemy(this.height, this.width)
                 this.ennemies.push(ennemy)
@@ -74,6 +76,7 @@ class Game {
     didEnnemyHitPlayer() {
         this.ennemies.forEach((ennemy, indexE) => {
             if (this.player.left < ennemy.left + ennemy.width && this.player.left + this.player.width > ennemy.left && this.player.top + this.player.height > ennemy.top && this.player.top < ennemy.top + ennemy.width) {
+                this.player.hurtSound.play()
                 ennemy.ennemy.remove()
                 this.ennemies.splice(indexE, 1)
                 this.player.health -= 1
