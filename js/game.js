@@ -20,9 +20,9 @@ class Game {
 
 
     start() {
+        //Start fight audio
         this.fightAudio.play()
         this.fightAudio.volume = this.volume
-
 
         // making player appear
         this.player.lifeBar.style.tranform = "translateX(-100px)"
@@ -30,6 +30,7 @@ class Game {
         this.player.playerDiv.style.height = `${this.player.height}px`
         this.player.playerDiv.style.display = "block"
 
+        //Waves of ennemies appears every 5sec
         this.intervalID = setInterval(() => {
             for (let i = 0; i < 5 + this.ennemiesWave; i++) {
                 const ennemy = new Ennemy(this.height, this.width)
@@ -38,16 +39,15 @@ class Game {
             }
             this.ennemySpeed += 0.1
             this.ennemiesWave += 1
-
         }, 5000)
 
+        //Start game's loop
         this.gameLoop()
     }
 
     //remove projectile and ennemy if he's touch by projectile
     didProjectileHitEnnemy() {
         this.ennemies.forEach((ennemy, indexE) => {
-
             this.player.projectiles.forEach((projectile, indexP) => {
                 if (projectile.left < ennemy.left + ennemy.width / 2 && projectile.left + projectile.width > ennemy.left + ennemy.width / 2 && projectile.top + projectile.height > ennemy.top && projectile.top < ennemy.top + ennemy.width) {
                     ennemy.ennemyDead = true
@@ -65,33 +65,10 @@ class Game {
                     ennemy.ennemy.append(ennemyDying)
                     this.ennemies.splice(indexE, 1)
                     ennemy.isEnnemyDead()
-
                 }
             })
         })
-
     }
-
-    displayScore5Digits(){
-        const scoreIn5Digits = ["","", "", "", ""]
-        if(this.score.toString().length < 5 ){
-        let arrayOfScore = this.score.toString().split("").reverse()
-        for(let i = 0 ; i < 5; i ++){
-            if(arrayOfScore[i]){
-                scoreIn5Digits[i] = arrayOfScore[i]
-            }else{
-                scoreIn5Digits[i]="0"
-            }
-        }   
-        const scoreToDisplay = scoreIn5Digits.reverse().join('')
-        this.scoreDiv.textContent = `Score: ${scoreToDisplay}`
-        }
-        else{
-            this.scoreDiv.textContent = `Score: ${this.score}`
-        }
-        
-    }
-
 
     //Deals 10 dmg to player when ennemy hit him
     didEnnemyHitPlayer() {
@@ -100,6 +77,20 @@ class Game {
                 ennemy.ennemy.remove()
                 this.ennemies.splice(indexE, 1)
                 this.player.health -= 1
+                this.player.playerImg.removeAttribute('class')
+                this.player.playerImg.classList.add('character-hurt')
+
+                setTimeout(() => {
+                    if (this.player.currentDirection === "left") {
+                        this.player.playerImg.removeAttribute('class')
+                        this.player.playerImg.classList.add('character-not-moving-left')
+                    } else {
+                        this.player.playerImg.removeAttribute('class')
+                        this.player.playerImg.classList.add('character-not-moving-right')
+                    }
+                }, 200)
+
+
             }
         })
 
@@ -119,20 +110,35 @@ class Game {
         if (this.player.health === 1) {
             this.player.lifeBar.classList.add("life-bar15")
         }
+    }
 
+    displayScore5Digits() {
+        const scoreIn5Digits = ["", "", "", "", ""]
+        if (this.score.toString().length < 5) {
+            let arrayOfScore = this.score.toString().split("").reverse()
+            for (let i = 0; i < 5; i++) {
+                if (arrayOfScore[i]) {
+                    scoreIn5Digits[i] = arrayOfScore[i]
+                } else {
+                    scoreIn5Digits[i] = "0"
+                }
+            }
+            const scoreToDisplay = scoreIn5Digits.reverse().join('')
+            this.scoreDiv.textContent = `Score: ${scoreToDisplay}`
+        }
+        else {
+            this.scoreDiv.textContent = `Score: ${this.score}`
+        }
     }
 
     gameLoop() {
-
         this.intervalIDOfLoop = setInterval(() => {
-
             //Player movement
             this.player.move()
             //Ennemies movement
             this.ennemies.forEach((ennemy) => {
                 ennemy.ennemyMovement()
             })
-
             this.ennemies.forEach((ennemy) => {
                 const randomSpeed = Math.random() * this.ennemySpeed
                 if (this.player.top > ennemy.top) {
@@ -160,7 +166,7 @@ class Game {
                     this.player.projectiles.splice(index, 1)
                 }
             })
-            
+
             //Score updates on DOM
             this.displayScore5Digits()
 
@@ -191,7 +197,6 @@ class Game {
                 endScore.textContent = `Your score is ${this.score}`
                 this.fightAudio.pause()
             }
-
         }, 6)
     }
 

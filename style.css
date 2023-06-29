@@ -233,7 +233,6 @@ main {
     display: none;
 }
 
-
 /*CHARACTER MOVEMENT*/
 @keyframes character-right {
     from{
@@ -288,6 +287,28 @@ main {
     }
 }
 
+@keyframes characterHurt{
+    from{
+        transform : translate3d(-45px, -2509px, 0);
+    }
+    to {
+        transform: translate3d(-41.5%, -2518px, 0);
+    }
+}
+
+.test{
+    overflow: hidden;
+    width: 40px;
+    height: 60px;
+    /* background-color: red; */
+}
+
+.test .image-test{
+    width:1100px;
+    left : 1000px;
+    animation : characterHurt 0.3s steps(3) infinite
+}
+
 #player {
     position: absolute;
     display: none;
@@ -322,6 +343,10 @@ main {
     animation : characterShootingLeft 0.3s steps(6)
 }
 
+.character-hurt{
+    animation : characterHurt 0.3s steps(3) infinite
+}
+
 /*PROJECTILE*/
 .projectile{
     top : -10px;
@@ -335,7 +360,6 @@ main {
 }
 
 @keyframes projectileShoot {
-
     from{
         transform : translate3d(1px, -8px, 0);
     }
@@ -343,7 +367,6 @@ main {
         transform: translate3d(-100%, -8px, 0);
     }
 }
-
 
 /*ENNEMY*/
 .ennemy{
@@ -394,23 +417,6 @@ main {
         transform: translate3d(-42.5%, -624px, 0);
     }
 }
-
-.test{
-    overflow: hidden; 
-    width: 44px;
-    height: 20px;
-    /* background-color: rgba(255, 0, 0, 0.525);  */
-    
-}
-
-
-.test .image-test{
-    width:250px;
-    scale: -1 1;
-    transform: rotate(0deg);
-    animation : projectileShoot 0.2s steps(4) infinite
-}
-
 
 
 
@@ -548,11 +554,7 @@ main {
     padding: 5px 0 0 5px;
 }
 
-
-
-
 /*ASIDES*/
-
 .instructions {
     font-size: 2rem;
     width: 400px;
@@ -569,7 +571,6 @@ main {
     margin-bottom: 30px;
     text-align: center;
 }
-
 
 .three-arrows {
     display: flex;
@@ -608,47 +609,27 @@ main {
     width: 400px;
     margin : 0 10px;
     font-size: 2rem;
-    /* background-color: green; */
 }
 
 footer {
-    background-color: aqua;
     position: absolute;
     bottom: 10px;
     right: 10px;
 }
-.audio{
-    position: relative;
-}
-.play-song{
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    top: 21px;
-    left: 20px;
-    background-color: red;
-
-}
 
 @media (max-width: 1280px) {
-
     .instructions{
         width: 50%;
     }
-
     header{
         height: 10vh;
     }
-
     main {
         flex-direction: column-reverse;
         height: 80vh;
         row-gap: 10px;
     }
-
     .rules{
         display: none;
     }
-
-
 }
